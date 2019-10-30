@@ -1,0 +1,68 @@
+stages:
+  - build
+#  - first_start
+#  - deploy-to-dev
+  - deploy-to-prod
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_JOB_ID
+  IMAGE_LATEST: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  GIT_SSL_NO_VERIFY: "true"
+  SITE: registry.k-3soft.com
+  IMAGE: infrastructure/rancher-compose-cli:master
+
+before_script:
+    - apk add --update openssh-client bash
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "$SSH_PROD_KEY")'
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+build:
+   image: docker:latest
+   services:
+    - docker:dind
+   stage: build
+   script:
+#    - mv .env.prod .env
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $SITE
+    - docker build -t $IMAGE_TAG .
+    - docker tag $IMAGE_TAG $IMAGE_LATEST
+    - docker push $IMAGE_TAG 
+    - docker push $IMAGE_LATEST
+   only:
+    - master
+#    - dev
+
+#rancher:
+#   image: $SITE/$IMAGE
+#   services:
+#    - docker:dind
+#   stage: first_start
+#   script:
+#    - rancher-compose -p $CI_PROJECT_NAMESPACE -f docker-compose.prod.yml up
+#   only:
+#    - rancher
+#   when: manual
+
+#deploy-to-dev:
+#  stage: deploy-to-dev
+#  image: cdrx/rancher-gitlab-deploy
+#  script:
+#    - upgrade --stack $CI_PROJECT_NAMESPACE --service php --new-image $IMAGE_LATEST --sidekicks
+#    - upgrade --stack $CI_PROJECT_NAMESPACE --service nginx
+#  only:
+#    - dev
+#  when: manual
+
+deploy-to-prod:
+  stage: deploy-to-prod
+  image: cdrx/rancher-gitlab-deploy
+  script:
+    - sh -c 'eval $(ssh-agent -s)'
+    - bash -c 'ssh-add <(echo "$SSH_PROD_KEY")'
+    - ssh -t root@$IP_PROD "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $SITE"
+    - ssh -t root@$IP_PROD "cd /root/backend && docker-compose pull && docker-compose up -d"
+  only:
+    - master
+  when: manual

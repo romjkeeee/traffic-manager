@@ -1,0 +1,32 @@
+version: '2'
+services:
+  back:
+    image: $IMAGE_LATEST
+    container_name: back
+    links:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=allpolis
+      - DB_USERNAME=allpolis
+      - DB_PASSWORD=8hZD@qN9*qp7
+      - APP_KEY=base64:qAPTveVLndokuOOzyBeTRVZ5EYzVObYeM/Tqg8cAbu0=
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: runner=true 
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=allpolis
+      - MYSQL_USER=allpolis
+      - MYSQL_PASSWORD=8hZD@qN9*qp7
+    command:
+    - --character-set-server=utf8mb4
+    - --collation-server=utf8mb4_unicode_ci
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: runner=true
