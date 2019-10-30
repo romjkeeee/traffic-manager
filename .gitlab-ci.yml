@@ -52,7 +52,7 @@ deploy-to-dev:
     - upgrade --stack $CI_PROJECT_NAMESPACE --service php --new-image $IMAGE_LATEST --sidekicks
     - upgrade --stack $CI_PROJECT_NAMESPACE --service nginx
   only:
-    - dev
+    - master
   when: manual
 
 #deploy-to-prod:
