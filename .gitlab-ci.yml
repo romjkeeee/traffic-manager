@@ -32,7 +32,7 @@ build:
     - docker push $IMAGE_LATEST
    only:
     - master
-#    - dev
+    - dev
 
 rancher:
    image: $SITE/$IMAGE
@@ -52,7 +52,7 @@ deploy-to-dev:
     - upgrade --stack $CI_PROJECT_NAMESPACE --service php --new-image $IMAGE_LATEST --sidekicks
     - upgrade --stack $CI_PROJECT_NAMESPACE --service nginx
   only:
-    - master
+    - dev
   when: manual
 
 #deploy-to-prod:
