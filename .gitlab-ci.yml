@@ -11,12 +11,12 @@ variables:
   SITE: registry.k-3soft.com
   IMAGE: infrastructure/rancher-compose-cli:master
 
-before_script:
-    - apk add --update openssh-client bash
-    - eval $(ssh-agent -s)
-    - bash -c 'ssh-add <(echo "$SSH_PROD_KEY")'
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+#before_script:
+#    - apk add --update openssh-client bash
+#    - eval $(ssh-agent -s)
+#    - bash -c 'ssh-add <(echo "$SSH_PROD_KEY")'
+#    - mkdir -p ~/.ssh
+#    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 build:
    image: docker:latest
