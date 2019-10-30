@@ -1,4 +1,4 @@
-FROM registry.k-3soft.com/startup/images/backend:master
+FROM registry.k-3soft.com/traffic-manager/images/backend:master
 ADD /docker/www.conf /usr/local/etc/php-fpm.d/
 ADD /docker/php.ini /usr/local/etc/php/
 ADD /docker/supervisord.conf /etc/supervisor/
