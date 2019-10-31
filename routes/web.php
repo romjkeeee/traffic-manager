@@ -20,6 +20,7 @@ Route::group(['middleware'=>'auth'], function () {
     Route::resource('/pages/application', 'ApplicationController');
     Route::resource('/pages/countries', 'CountriesController');
     Route::resource('/pages/offers', 'OffersController');
+    Route::resource('/pages/deep_link', 'DeepLinkController');
 
 
 
