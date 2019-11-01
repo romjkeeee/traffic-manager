@@ -32,8 +32,8 @@
                     <h3 class="card-title">@lang('adminlte.application')</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover">
+                <div class="card-body">
+                    <table   class="table table-responsive table-responsive" id="myTable">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -51,7 +51,7 @@
                                 <td>{{ $application->name }}</td>
                                 <td>{{ $application->link_android }}</td>
                                 <td>{{ $application->link_ios }}</td>
-                                <td>{{ $application->deeplink }}</td>
+                                <td style="width: 100%">{{ $application->deeplink }}</td>
                                 <td>
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
@@ -72,4 +72,11 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+@section('js')
+{{--        <script>--}}
+{{--            $(document).ready(function() {--}}
+{{--                $('#myTable').DataTable();--}}
+{{--            } );--}}
+{{--        </script>--}}
 @stop
