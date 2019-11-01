@@ -12,7 +12,7 @@ php view:clear
 php route:clear
 php config:clear
 php cache:clear
-php artisan adminlte:install
+# php artisan adminlte:install
 
 npm run dev
 
