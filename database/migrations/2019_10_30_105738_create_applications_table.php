@@ -16,7 +16,8 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('link');
+            $table->string('link_android');
+            $table->string('link_ios');
             $table->string('deeplink');
             $table->timestamps();
         });

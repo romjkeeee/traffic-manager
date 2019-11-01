@@ -17,4 +17,9 @@ class Offers extends Model
     {
         return $this->belongsTo(Application::class, 'application_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

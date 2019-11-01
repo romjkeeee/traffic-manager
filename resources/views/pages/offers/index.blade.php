@@ -40,7 +40,8 @@
                             <th>@lang('adminlte.link')</th>
                             <th>@lang('adminlte.countries')</th>
                             <th>@lang('adminlte.application')</th>
-                            <th>@lang('adminlte.deeplink')</th>
+                            <th>@lang('adminlte.user')</th>
+                            <th>Deep Link</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
                         </thead>
@@ -49,8 +50,9 @@
                         <tr>
                         <td>{{$offers->id}}</td>
                         <td>{{ $offers->url }}</td>
-                        <td>{{ $offers->countries_id }}</td>
-                        <td>{{ $offers->application_id }}</td>
+                        <td>{{ $offers->countries_id? $offers->countries->name: '' }}</td>
+                        <td>{{ $offers->application_id? $offers->applications->name: '' }}</td>
+                        <td>{{ $offers->user_id? $offers->user->email: '' }}</td>
                         <td>{{ $offers->deeplink }}</td>
                         <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>

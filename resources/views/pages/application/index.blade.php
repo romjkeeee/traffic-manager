@@ -38,7 +38,8 @@
                         <tr>
                             <th>ID</th>
                             <th>@lang('adminlte.name')</th>
-                            <th>@lang('adminlte.link')</th>
+                            <th>@lang('adminlte.link_android')</th>
+                            <th>@lang('adminlte.link_ios')</th>
                             <th>@lang('adminlte.deeplink')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
@@ -48,7 +49,8 @@
                             <tr>
                                 <td>{{ $application->id }}</td>
                                 <td>{{ $application->name }}</td>
-                                <td>{{ $application->link }}</td>
+                                <td>{{ $application->link_android }}</td>
+                                <td>{{ $application->link_ios }}</td>
                                 <td>{{ $application->deeplink }}</td>
                                 <td>
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>

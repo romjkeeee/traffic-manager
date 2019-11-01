@@ -15,19 +15,23 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>@lang('adminlte.link')</label>
-                    <input class="form-control" value="<?=$data->url?>" disabled>
+                    <input class="form-control" value="{{ $data->url }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.countries')</label>
-                    <input class="form-control" value="<?=$data->countries_id?>" disabled>
+                    <input class="form-control" value="{{ $data->countries_id? $data->countries->name: '' }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>@lang('adminlte.user')</label>
+                    <input class="form-control" value="{{ $data->application_id? $data->applications->name: '' }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.application')</label>
-                    <input class="form-control" value="<?=$data->application_id?>" disabled>
+                    <input class="form-control" value="{{ $data->user_id? $data->user->email: '' }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.deeplink')</label>
-                    <input class="form-control" value="<?=$data->deeplink?>" disabled>
+                    <input class="form-control" value="{{ $data->deeplink }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->

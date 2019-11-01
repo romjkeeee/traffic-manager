@@ -18,7 +18,8 @@ class CreateOffersTable extends Migration
             $table->string('url');
             $table->string('countries_id');
             $table->string('application_id');
-            $table->string('deeplink');
+            $table->string('user_id');
+            $table->string('deeplink')->nullable();
             $table->timestamps();
         });
     }

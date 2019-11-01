@@ -21,18 +21,45 @@
                         'deeplink',
                     );
                     ?>
-                    @foreach($form_fields as $field)
+
                         <div class="form-group">
-                            <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
-                            <input class="form-control"  style="" name="{{ $field }}" id="input{{ $field }}" >
+                            <label for="inputForurl">@lang('adminlte.url')</label>
+                            <input class="form-control"  style="" name="url" id="inputurl" >
                         </div>
-                    @endforeach
+                    <div class="form-group">
+                        <label for="inputForurl">@lang('adminlte.countries_id')</label>
+                        <p><select name="countries_id">
+                            <option selected disabled>Выберите страну</option>
+                            @foreach($countries as $key => $strana)
+                                <option value="{{ $key }}">{{ $strana }}</option>
+                            @endforeach
+                        </select></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Приложения</label>
+                        <p><select name="application_id">
+                            <option selected disabled>Выберите приложение</option>
+                            @foreach($app as $key => $application)
+                                <option value="{{ $key }}">{{ $application }}</option>
+                            @endforeach
+                        </select></p>
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('adminlte.webmaster')</label>
+                        <p><select name="user_id">
+                            <option selected disabled>Выберите пользователя</option>
+                            @foreach($user as $key => $master)
+                                <option value="{{ $key }}">{{ $master }}</option>
+                            @endforeach
+                        </select></p>
+                    </div>
+
 
 
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary margin-r-5">@lang('adminlte.save')</button>
-                        <a href="{{ route('deep_link.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
+                        <a href="{{ route('offers.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
 
                     </div>
                 </form>

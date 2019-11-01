@@ -174,7 +174,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Заявки',
+            'text'        => 'Приложения',
             'url'         => 'pages/application',
             'icon'        => 'far fa-fw fa-file',
         ],
@@ -186,11 +186,6 @@ return [
         [
             'text'        => 'Предложения',
             'url'         => 'pages/offers',
-            'icon'        => 'far fa-fw fa-file',
-        ],
-        [
-            'text'        => 'Внешние ссылки',
-            'url'         => 'pages/deep_link',
             'icon'        => 'far fa-fw fa-file',
         ],
 

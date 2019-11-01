@@ -17,7 +17,8 @@
                 <?php
                 $form_fields = array(
                    'name',
-                    'link',
+                    'link_android',
+                    'link_ios',
                     'deeplink',
                 );
 

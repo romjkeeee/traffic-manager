@@ -21,11 +21,12 @@ return [
     'countries'    => 'Страны',
     'countries_id'    => 'Страны',
     'name'    => 'Наименование',
-    'link'    => 'Ссылка',
+    'link_android'    => 'Ссылка Android',
+    'link_ios'    => 'Ссылка IOS',
     'url'    => 'Ссылка',
-    'deeplink'    => 'Внешняя ссылка',
+    'deeplink'    => 'Deep Link Domain',
     'action'    => 'Действие',
-    'application'    => 'Заявки',
+    'application'    => 'Приложения',
     'application_id'    => 'Заявки',
     'application_edit'    => 'Редактирование Заявки',
     'save'    => 'Сохранить',
@@ -40,5 +41,6 @@ return [
     'sub2'    => 'Под2',
     'sub3'    => 'Под3',
     'comment'    => 'Комментарий',
+    'user'    => 'webmaster',
 
 ];

@@ -15,15 +15,19 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>@lang('adminlte.name')</label>
-                    <input class="form-control" value="<?=$data->name?>" disabled>
+                    <input class="form-control" value="{{ $data->name }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label>@lang('adminlte.link')</label>
-                    <input class="form-control" value="<?=$data->link?>" disabled>
+                    <label>@lang('adminlte.link_android')</label>
+                    <input class="form-control" value="{{ $data->link_android }}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>@lang('adminlte.link_ios')</label>
+                    <input class="form-control" value="{{ $data->link_ios }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.deeplink')</label>
-                    <input class="form-control" value="<?=$data->deeplink?>" disabled>
+                    <input class="form-control" value="{{ $data->deeplink }}" disabled>
                 </div>
             </div>
             <!-- /.card-body -->

@@ -7,41 +7,73 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">@lang('adminlte.name')</h3>
+            <h3 class="card-title">Создание предложения</h3>
         </div>
-    <div class="panel panel-default">
-        <div class="card-body">
-            <form action="{{ route('offers.update', $data) }}" method="POST">
-                {{ method_field('PUT') }}
-                {{ csrf_field() }}
-                <?php
-                $form_fields = array(
-                    'url',
-                    'countries_id',
-                    'application_id',
-                    'deeplink',
-                );
+        <div class="panel panel-default">
+            <div class="card-body">
+                <form action="{{ route('offers.update', $data) }}" method="POST">
+                    {{ method_field('PUT') }}
+                    {{ csrf_field() }}
+                    <?php
+                    $form_fields = array(
+                        'url',
+                        'countries_id',
+                        'application_id',
+                        'deeplink',
+                    );
+                    ?>
 
-                ?>
-                @foreach($form_fields as $field)
                     <div class="form-group">
-                        <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
-                        <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}"  placeholder="@lang('anketa.placeholder_'.$field)"  value="{{$data[$field]}}" >
+                        <label for="inputForurl">@lang('adminlte.url')</label>
+                        <input class="form-control"  style="" name="url" id="inputurl" value="{{ $data->url }}">
                     </div>
-                @endforeach
+                    <div class="form-group">
+                        <label for="inputForurl">@lang('adminlte.countries_id')</label>
+                        <p><select name="countries_id">
+                                <option selected disabled>Выберите страну</option>
+                                @foreach($countries as $key => $strana)
+                                    <option value="{{ $key }}">{{ $strana }}</option>
+                                @endforeach
+                            </select></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Приложения</label>
+                        <p><select name="application_id">
+                                <option selected disabled>Выберите приложение</option>
+                                @foreach($app as $key => $application)
+                                    <option value="{{ $key }}">{{ $application }}</option>
+                                @endforeach
+                            </select></p>
+                    </div>
+                    <div class="form-group">
+                        <label>@lang('adminlte.user')</label>
+                        <p><select name="user_id">
+                                <option selected disabled>Выберите пользователя</option>
+                                @foreach($user as $key => $master)
+                                    <option value="{{ $key }}">{{ $master }}</option>
+                                @endforeach
+                            </select></p>
+                    </div>
 
 
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary margin-r-5">@lang('adminlte.save')</button>
-                    <a href="{{ route('offers.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
 
-                </div>
-            </form>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary margin-r-5">@lang('adminlte.save')</button>
+                        <a href="{{ route('offers.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
+
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-@stop
+        @stop
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+        @section('css')
+            <link rel="stylesheet" href="/css/admin_custom.css">
+        @stop
+
+
+
+        @section('css')
+            <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

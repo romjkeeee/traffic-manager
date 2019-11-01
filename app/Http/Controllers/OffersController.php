@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
+use App\Countries;
 use App\Offers;
+use App\User;
 use Illuminate\Http\Request;
 
 class OffersController extends Controller
@@ -26,7 +29,13 @@ class OffersController extends Controller
      */
     public function create()
     {
-        return view('pages.offers.create');
+        $app = Application::get()->pluck('name', 'id');
+
+        $countries = Countries::get()->pluck('name', 'id');
+
+        $user = User::get()->pluck('email', 'id');
+
+        return view('pages.offers.create', compact('app', 'countries', 'user'));
     }
 
     /**
@@ -39,6 +48,9 @@ class OffersController extends Controller
     {
         $deep_link = new Offers();
         $deep_link->fill($request->all());
+        $deep_link->save();
+        $user_app = Application::where('id','=',$request->application_id)->first();
+        $deep_link->deeplink = $user_app->deeplink.'param='.$deep_link->id;
         $deep_link->save();
 
         $data = Offers::all();
@@ -66,9 +78,15 @@ class OffersController extends Controller
      */
     public function edit(Offers $offer)
     {
-        //
+        $app = Application::get()->pluck('name', 'id');
+
+        $countries = Countries::get()->pluck('name', 'id');
+
+        $user = User::get()->pluck('email', 'id');
+
         $data = $offer;
-        return view('pages.offers.edit', compact('data'));
+
+        return view('pages.offers.edit', compact('data','app', 'countries', 'user'));
     }
 
     /**
