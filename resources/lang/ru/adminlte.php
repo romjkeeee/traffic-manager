@@ -23,6 +23,7 @@ return [
     'name'    => 'Наименование',
     'link_android'    => 'Ссылка Android',
     'link_ios'    => 'Ссылка IOS',
+    'link'    => 'Ссылка',
     'url'    => 'Ссылка',
     'deeplink'    => 'Deep Link Domain',
     'action'    => 'Действие',
