@@ -47,7 +47,7 @@
                 <tr>
                     <th>User</th>
                     @foreach($form_fields as $fields)
-                        <th>{{ $fields }}</th>
+                        <th>@lang('adminlte.'.$fields)</th>
                     @endforeach
                 </tr>
                 </thead>

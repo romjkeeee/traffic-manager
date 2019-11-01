@@ -3,8 +3,28 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
+@section('content_header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@lang('adminlte.offers')</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+                    <li class="breadcrumb-item active">@lang('adminlte.offers')</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+@stop
 
 @section('content')
+    <div class="primary">
+        <p>
+            <a href="{{ route('offers.create') }}" class="btn btn-success btn-lg">Создать</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -29,8 +49,8 @@
                         <tr>
                         <td>{{$offers->id}}</td>
                         <td>{{ $offers->url }}</td>
-                        <td>{{ $offers->countries_id? $offers->countries->name: '' }}</td>
-                        <td>{{ $offers->application_id? $offers->applications->name: '' }}</td>
+                        <td>{{ $offers->countries_id }}</td>
+                        <td>{{ $offers->application_id }}</td>
                         <td>{{ $offers->deeplink }}</td>
                         <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>

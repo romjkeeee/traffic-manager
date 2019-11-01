@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -26,7 +28,8 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('pages.application.create');
     }
 
     /**
@@ -37,7 +40,12 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $deep_link = new Application();
+        $deep_link->fill($request->all());
+        $deep_link->save();
+
+        $data = Application::all();
+        return view('pages.application.index', compact('data'));
     }
 
     /**

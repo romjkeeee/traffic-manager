@@ -26,7 +26,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.countries.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $deep_link = new Countries();
+        $deep_link->fill($request->all());
+        $deep_link->save();
+
+        $data = Countries::all();
+        return view('pages.countries.index', compact('data'));
     }
 
     /**

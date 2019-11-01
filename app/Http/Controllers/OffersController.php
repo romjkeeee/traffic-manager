@@ -26,7 +26,7 @@ class OffersController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.offers.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $deep_link = new Offers();
+        $deep_link->fill($request->all());
+        $deep_link->save();
+
+        $data = Offers::all();
+        return view('pages.offers.index', compact('data'));
     }
 
     /**
