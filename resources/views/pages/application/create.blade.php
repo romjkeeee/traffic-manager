@@ -16,7 +16,8 @@
                     <?php
                     $form_fields = array(
                         'name',
-                        'link',
+                        'link_android',
+                        'link_ios',
                         'deeplink',
                     );
                     ?>
@@ -31,7 +32,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary margin-r-5">@lang('adminlte.save')</button>
-                        <a href="{{ route('deep_link.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
+                        <a href="{{ route('application.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
 
                     </div>
                 </form>
