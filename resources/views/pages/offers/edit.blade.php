@@ -32,7 +32,11 @@
                         <p><select name="countries_id">
                                 <option selected disabled>Выберите страну</option>
                                 @foreach($countries as $key => $strana)
+                                    @if($key == $data->countries_id)
+                                    <option value="{{ $key }}" selected>{{ $strana }}</option>
+                                    @else
                                     <option value="{{ $key }}">{{ $strana }}</option>
+                                    @endif
                                 @endforeach
                             </select></p>
                     </div>
@@ -41,7 +45,11 @@
                         <p><select name="application_id">
                                 <option selected disabled>Выберите приложение</option>
                                 @foreach($app as $key => $application)
-                                    <option value="{{ $key }}">{{ $application }}</option>
+                                    @if($key == $data->application_id)
+                                        <option value="{{ $key }}" selected>{{ $application }}</option>
+                                    @else
+                                        <option value="{{ $key }}">{{ $application }}</option>
+                                    @endif
                                 @endforeach
                             </select></p>
                     </div>
@@ -50,7 +58,11 @@
                         <p><select name="user_id">
                                 <option selected disabled>Выберите пользователя</option>
                                 @foreach($user as $key => $master)
-                                    <option value="{{ $key }}">{{ $master }}</option>
+                                    @if($key == $data->user_id)
+                                        <option value="{{ $key }}" selected>{{ $master }}</option>
+                                    @else
+                                        <option value="{{ $key }}">{{ $master }}</option>
+                                    @endif
                                 @endforeach
                             </select></p>
                     </div>

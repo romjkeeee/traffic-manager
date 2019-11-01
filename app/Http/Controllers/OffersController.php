@@ -98,12 +98,18 @@ class OffersController extends Controller
      */
     public function update(Request $request, Offers $offer)
     {
+        $app = Application::get()->pluck('name', 'id');
+
+        $countries = Countries::get()->pluck('name', 'id');
+
+        $user = User::get()->pluck('email', 'id');
+
         $alldata = $request->all();
 
         $offer->update($alldata);
+        $data = Offers::all();
 
-        $data = $offer;
-        return view('pages.offers.edit', compact('data'));
+        return view('pages.offers.index', compact('data'));
     }
 
     /**
