@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>@lang('adminlte.application')</h1>
+                <h1>@lang('adminlte.users')</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-                    <li class="breadcrumb-item active">@lang('adminlte.application')</li>
+                    <li class="breadcrumb-item active">@lang('adminlte.users')</li>
                 </ol>
             </div>
         </div>
@@ -20,16 +20,16 @@
 @stop
 
 @section('content')
-    <div class="primary">
-        <p>
-            <a href="{{ route('application.create') }}" class="btn btn-success btn-lg">Создать</a>
-        </p>
-    </div>
+{{--    <div class="primary">--}}
+{{--        <p>--}}
+{{--            <a href="{{ route('users.create') }}" class="btn btn-success btn-lg">Создать</a>--}}
+{{--        </p>--}}
+{{--    </div>--}}
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">@lang('adminlte.application')</h3>
+                    <h3 class="card-title">@lang('adminlte.users')</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -37,11 +37,9 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>@lang('adminlte.name')</th>
-                            <th>@lang('adminlte.link_android')</th>
-                            <th>@lang('adminlte.link_ios')</th>
-                            <th>@lang('adminlte.deeplink')</th>
-                            <th>@lang('adminlte.comment')</th>
+                            <th>@lang('adminlte.name_user')</th>
+                            <th>@lang('adminlte.email')</th>
+                            <th>@lang('adminlte.role')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
                         </thead>
@@ -50,13 +48,11 @@
                             <tr>
                                 <td>{{ $application->id }}</td>
                                 <td>{{ $application->name }}</td>
-                                <td>{{ $application->link_android }}</td>
-                                <td>{{ $application->link_ios }}</td>
-                                <td style="width: 100%">{{ $application->deeplink }}</td>
-                                <td>{{ $application->comment }}</td>
+                                <td>{{ $application->email }}</td>
+                                <td>{{ $application->role }}</td>
                                 <td>
-                                    <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
-                                    <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('users.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('users.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -76,9 +72,9 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 @section('js')
-{{--        <script>--}}
-{{--            $(document).ready(function() {--}}
-{{--                $('#myTable').DataTable();--}}
-{{--            } );--}}
-{{--        </script>--}}
+    {{--        <script>--}}
+    {{--            $(document).ready(function() {--}}
+    {{--                $('#myTable').DataTable();--}}
+    {{--            } );--}}
+    {{--        </script>--}}
 @stop

@@ -35,14 +35,20 @@
     );
 
     ?>
-    <div class="primary">
-        <p>
-    <a href="{{ route('deep_link.create') }}" class="btn btn-success btn-lg">Создать</a>
-        </p>
+    <div class="row">
+        <div class="col-12">
+            <div class="float-left">
+            <a href="{{ route('deep_link.create') }}" class="btn btn-success btn-lg">Создать</a>
+        </div>
+        <div class="float-right">
+            <a href="{{ route('deep_link.export') }}" class="btn btn-success btn-lg">Выгрузить XLS</a>
+            </div>
+        </div>
     </div>
-    <div class="card">
-        <div class="card-body table-responsive p-0">
-            <table class="table table-hover">
+    <div class="row">
+        <div class="card">
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>User</th>
@@ -102,6 +108,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 @stop
 

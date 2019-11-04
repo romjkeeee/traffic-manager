@@ -188,6 +188,16 @@ return [
             'url'         => 'pages/offers',
             'icon'        => 'far fa-fw fa-file',
         ],
+        [
+            'text'        => 'Внешние ссылки',
+            'url'         => 'pages/deep_link',
+            'icon'        => 'far fa-fw fa-file',
+        ],
+        [
+            'text'        => 'Users',
+            'url'         => 'pages/users',
+            'icon'        => 'far fa-fw fa-file',
+        ],
 
 
     ],

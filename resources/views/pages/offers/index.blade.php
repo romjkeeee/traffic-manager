@@ -41,6 +41,7 @@
                             <th>@lang('adminlte.countries')</th>
                             <th>@lang('adminlte.application')</th>
                             <th>@lang('adminlte.user')</th>
+                            <th>@lang('adminlte.comment')</th>
                             <th>Deep Link</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
@@ -50,9 +51,10 @@
                         <tr>
                         <td>{{$offers->id}}</td>
                         <td>{{ $offers->url }}</td>
-                        <td>{{ $offers->countries_id? $offers->countries->name: '' }}</td>
+                        <td>{{ $offers->countries_id }}</td>
                         <td>{{ $offers->application_id? $offers->applications->name: '' }}</td>
                         <td>{{ $offers->user_id? $offers->user->email: '' }}</td>
+                        <td>{{ $offers->comment }}</td>
                         <td>{{ $offers->deeplink }}</td>
                         <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>

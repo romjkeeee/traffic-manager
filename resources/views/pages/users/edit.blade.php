@@ -7,25 +7,25 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Создание приложения</h3>
+            <h3 class="card-title">@lang('adminlte.application_edit')</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
-                <form action="{{ route('application.store') }}" method="POST">
+                <form action="{{ route('users.update', $data) }}" method="POST">
+                    {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <?php
                     $form_fields = array(
                         'name',
-                        'link_android',
-                        'link_ios',
-                        'comment',
-                        'deeplink',
+                        'email',
+                        'role',
                     );
+
                     ?>
                     @foreach($form_fields as $field)
                         <div class="form-group">
                             <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
-                            <input class="form-control"  style="" name="{{ $field }}" id="input{{ $field }}" >
+                            <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}"  placeholder="@lang('anketa.placeholder_'.$field)"  value="{{$data[$field]}}" >
                         </div>
                     @endforeach
 
@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary margin-r-5">@lang('adminlte.save')</button>
-                        <a href="{{ route('application.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
 
                     </div>
                 </form>

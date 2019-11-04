@@ -40,9 +40,9 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        $deep_link = new Application();
-        $deep_link->fill($request->all());
-        $deep_link->save();
+        $application = new Application();
+        $application->fill($request->all());
+        $application->save();
 
         $data = Application::all();
         return view('pages.application.index', compact('data'));
@@ -88,8 +88,8 @@ class ApplicationController extends Controller
 
         $application->update($alldata);
 
-        $data = $application;
-        return view('pages.application.edit', compact('data'));
+        $data = $application->all();
+        return view('pages.application.index', compact('data'));
     }
 
     /**

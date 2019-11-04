@@ -6,6 +6,8 @@ use App\Application;
 use App\Deep_link;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\DeeplinkExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DeepLinkController extends Controller
 {
@@ -101,5 +103,10 @@ class DeepLinkController extends Controller
     public function destroy(Deep_link $deep_link)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new DeeplinkExport(), 'deeplink.xlsx');
     }
 }

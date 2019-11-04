@@ -47,11 +47,21 @@ class OffersController extends Controller
     public function store(Request $request)
     {
         $deep_link = new Offers();
-        $deep_link->fill($request->all());
-        $deep_link->save();
-        $user_app = Application::where('id','=',$request->application_id)->first();
-        $deep_link->deeplink = $user_app->deeplink.'param='.$deep_link->id;
-        $deep_link->save();
+            $data = [
+                'url' => $request->url,
+                'countries_id' => json_encode($request->countries_id),
+                'application_id' => $request->application_id,
+                'user_id' => $request->user_id,
+                'comment' => $request->comment,
+            ];
+        $deep_link->save($data);
+
+        if($request->application_id) {
+            $user_app = Application::where('id','=',$request->application_id)->first();
+            $deep_link->deeplink = $user_app->deeplink . 'param=' . $deep_link->id;
+
+            $deep_link->update($data);
+        }
 
         $data = Offers::all();
         return view('pages.offers.index', compact('data'));

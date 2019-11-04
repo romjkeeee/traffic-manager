@@ -19,6 +19,7 @@
                    'name',
                     'link_android',
                     'link_ios',
+                    'comment',
                     'deeplink',
                 );
 

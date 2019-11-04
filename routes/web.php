@@ -21,6 +21,8 @@ Route::group(['middleware'=>'auth'], function () {
     Route::resource('/pages/countries', 'CountriesController');
     Route::resource('/pages/offers', 'OffersController');
     Route::resource('/pages/deep_link', 'DeepLinkController');
+    Route::get('/export', 'DeepLinkController@export')->name('deep_link.export');
+    Route::resource('/pages/users', 'UsersController');
 
 
 

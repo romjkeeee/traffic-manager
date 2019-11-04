@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Countries;
+use App\User;
 use Illuminate\Http\Request;
 
-class CountriesController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        $data = Countries::all();
+        $data = User::all();
 
-        return view('pages.countries.index', compact('data'));
+        return view('pages.users.index', compact('data'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        return view('pages.countries.create');
+        return view('pages.users.create');
     }
 
     /**
@@ -37,64 +37,67 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        $deep_link = new Countries();
-        $deep_link->fill($request->all());
-        $deep_link->save();
+        $data = $request->all();
 
-        $data = Countries::all();
-        return view('pages.countries.index', compact('data'));
+        $users = new User();
+
+        $users->create($data);
+
+        $data = $users->all();
+
+        return view('pages.users.index', compact('data'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Countries  $countries
+     * @param  \App\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function show(Countries $country)
+    public function show(User $user)
     {
         //
-        $data = $country;
-        return view('pages.countries.show', compact('data'));
+        $data = $user;
+        return view('pages.users.show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Countries  $countries
+     * @param  \App\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Countries $country)
+    public function edit(User $user)
     {
-        //
-        $data = $country;
-        return view('pages.countries.edit', compact('data'));
+        $data = $user;
+
+        return view('pages.users.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Countries  $countries
+     * @param  \App\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Countries $country)
+    public function update(Request $request, User $user)
     {
         $alldata = $request->all();
 
-        $country->update($alldata);
+        $user->update($alldata);
+        $data = User::all();
 
-        $data = $country->all();
-        return view('pages.countries.index', compact('data'));
+        return view('pages.users.index', compact('data'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Countries  $countries
+     * @param  \App\Offers  $offers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Countries $countries)
+    public function destroy(User $user)
     {
         //
     }

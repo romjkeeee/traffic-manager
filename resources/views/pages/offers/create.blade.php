@@ -19,6 +19,7 @@
                         'countries_id',
                         'application_id',
                         'deeplink',
+                        'comment',
                     );
                     ?>
 
@@ -28,7 +29,7 @@
                         </div>
                     <div class="form-group">
                         <label for="inputForurl">@lang('adminlte.countries_id')</label>
-                        <p><select name="countries_id">
+                        <p><select name="countries_id[]" multiple>
                             <option selected disabled>Выберите страну</option>
                             @foreach($countries as $key => $strana)
                                 <option value="{{ $key }}">{{ $strana }}</option>
@@ -52,6 +53,10 @@
                                 <option value="{{ $key }}">{{ $master }}</option>
                             @endforeach
                         </select></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputForcomment">@lang('adminlte.comment')</label>
+                        <input class="form-control"  style="" name="comment" id="inputurl" >
                     </div>
 
 

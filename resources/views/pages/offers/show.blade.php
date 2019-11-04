@@ -33,6 +33,10 @@
                     <label>@lang('adminlte.deeplink')</label>
                     <input class="form-control" value="{{ $data->deeplink }}" disabled>
                 </div>
+                <div class="form-group">
+                    <label>@lang('adminlte.comment')</label>
+                    <input class="form-control" value="{{ $data->comment }}" disabled>
+                </div>
             </div>
             <!-- /.card-body -->
             <a href="{{ route('offers.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
