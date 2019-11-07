@@ -51,7 +51,16 @@
                         <tr>
                         <td>{{$offers->id}}</td>
                         <td>{{ $offers->url }}</td>
-                        <td>{{ $offers->countries_id }}</td>
+                        <td>
+                            <?php
+                          // dd($countries);
+                                $country = json_decode($offers->countries_id, true);
+                                foreach ($country as $countys ){
+                                    echo $countries[$countys]['name'].' ';
+                                }
+                            ?>
+
+                        </td>
                         <td>{{ $offers->application_id? $offers->applications->name: '' }}</td>
                         <td>{{ $offers->user_id? $offers->user->email: '' }}</td>
                         <td>{{ $offers->comment }}</td>

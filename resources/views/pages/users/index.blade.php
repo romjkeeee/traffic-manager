@@ -39,20 +39,20 @@
                             <th>ID</th>
                             <th>@lang('adminlte.name_user')</th>
                             <th>@lang('adminlte.email')</th>
-                            <th>@lang('adminlte.role')</th>
+                            <th>@lang('adminlte.role_id')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($data as $application)
+                        @foreach ($data as $user)
                             <tr>
-                                <td>{{ $application->id }}</td>
-                                <td>{{ $application->name }}</td>
-                                <td>{{ $application->email }}</td>
-                                <td>{{ $application->role }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td style="width: 100%">{{ $user->email }}</td>
+                                <td>{{ $user->role_id? $user->roles->name: '' }}</td>
                                 <td>
-                                    <a href="{{ route('users.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
-                                    <a href="{{ route('users.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('users.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('users.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach

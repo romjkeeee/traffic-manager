@@ -18,15 +18,31 @@
                     $form_fields = array(
                         'name',
                         'email',
-                        'role',
+                        'role_id',
                     );
 
                     ?>
                     @foreach($form_fields as $field)
+                        @if($field == 'role_id')
+                            <div class="form-group">
+                                <label for="inputForurl">@lang('adminlte.role_id')</label>
+                                <p><select name="countries_id">
+                                        <option selected disabled>Выберите роль</option>
+                                        @foreach($roles as $key => $role)
+                                            @if($key == $data->role_id)
+                                                <option value="{{ $key }}" selected>{{ $role }}</option>
+                                            @else
+                                                <option value="{{ $key }}">{{ $role }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select></p>
+                            </div>
+                            @else
                         <div class="form-group">
                             <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
                             <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}"  placeholder="@lang('anketa.placeholder_'.$field)"  value="{{$data[$field]}}" >
                         </div>
+                        @endif
                     @endforeach
 
 

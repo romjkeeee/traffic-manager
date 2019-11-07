@@ -31,9 +31,9 @@
                         <label for="inputForurl">@lang('adminlte.countries_id')</label>
                         <p><select name="countries_id[]" multiple>
                             <option selected disabled>Выберите страну</option>
-                            @foreach($countries as $key => $strana)
-                                <option value="{{ $key }}">{{ $strana }}</option>
-                            @endforeach
+                                @foreach($countries as $strana)
+                                        <option value="{{ $strana->id }}">{{ $strana->name }}</option>
+                                @endforeach
                         </select></p>
                     </div>
                     <div class="form-group">

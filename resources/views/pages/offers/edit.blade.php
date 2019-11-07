@@ -27,15 +27,17 @@
                         <label for="inputForurl">@lang('adminlte.url')</label>
                         <input class="form-control"  style="" name="url" id="inputurl" value="{{ $data->url }}">
                     </div>
+                    <?php $selected_countries = json_decode($data->countries_id,true);  ?>
                     <div class="form-group">
                         <label for="inputForurl">@lang('adminlte.countries_id')</label>
-                        <p><select name="countries_id" multiple>
-                                <option selected disabled>Выберите страну</option>
-                                @foreach($countries as $key => $strana)
-                                    @if($key == $data->countries_id)
-                                    <option value="{{ $key }}" selected>{{ $strana }}</option>
+                        <p><select name="countries_id[]" multiple>
+
+
+                                @foreach($countries as $strana)
+                                    @if( in_array($strana->id, $selected_countries))
+                                    <option value="{{ $strana->id }}" selected>{{ $strana->name }}</option>
                                     @else
-                                    <option value="{{ $key }}">{{ $strana }}</option>
+                                    <option value="{{ $strana->id }}">{{ $strana->name }}</option>
                                     @endif
                                 @endforeach
                             </select></p>

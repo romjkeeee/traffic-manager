@@ -44,7 +44,7 @@ return [
     'comment'    => 'Комментарий',
     'user'    => 'webmaster',
     'name_user'    => 'Имя пользователя',
-    'role'    => 'Роль',
+    'role_id'    => 'Роль',
     'users'    => 'Пользователи',
 
 ];

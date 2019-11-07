@@ -17,9 +17,11 @@ class OffersController extends Controller
      */
     public function index()
     {
-        $data = Offers::all();
+        $data = Offers::with('user')->get();
 
-        return view('pages.offers.index', compact('data'));
+        $countries = Countries::all();
+
+        return view('pages.offers.index', compact('data', 'countries'));
     }
 
     /**
@@ -31,7 +33,7 @@ class OffersController extends Controller
     {
         $app = Application::get()->pluck('name', 'id');
 
-        $countries = Countries::get()->pluck('name', 'id');
+        $countries = Countries::all();
 
         $user = User::get()->pluck('email', 'id');
 
@@ -46,6 +48,8 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
+        $countries = Countries::all();
+
         $deep_link = new Offers();
             $data = [
                 'url' => $request->url,
@@ -64,7 +68,7 @@ class OffersController extends Controller
         }
 
         $data = Offers::all();
-        return view('pages.offers.index', compact('data'));
+        return view('pages.offers.index', compact('data','countries'));
     }
 
     /**
@@ -90,7 +94,7 @@ class OffersController extends Controller
     {
         $app = Application::get()->pluck('name', 'id');
 
-        $countries = Countries::get()->pluck('name', 'id');
+        $countries = Countries::All();
 
         $user = User::get()->pluck('email', 'id');
 
@@ -108,18 +112,32 @@ class OffersController extends Controller
      */
     public function update(Request $request, Offers $offer)
     {
+
         $app = Application::get()->pluck('name', 'id');
 
-        $countries = Countries::get()->pluck('name', 'id');
+        $countries = Countries::All();
 
         $user = User::get()->pluck('email', 'id');
 
-        $alldata = $request->all();
+        $data = [
+            'id' => $request->id,
+            'url' => $request->url,
+            'countries_id' => json_encode($request->countries_id),
+            'application_id' => $request->application_id,
+            'user_id' => $request->user_id,
+            'comment' => $request->comment,
+        ];
+        $offer->update($data);
 
-        $offer->update($alldata);
+        if($request->application_id) {
+            $user_app = Application::where('id','=',$request->application_id)->first();
+            $offer->deeplink = $user_app->deeplink . 'param=' . $offer->id;
+
+            $offer->update($data);
+        }
+
         $data = Offers::all();
-
-        return view('pages.offers.index', compact('data'));
+        return view('pages.offers.index', compact('data', 'countries'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,10 @@ class UsersController extends Controller
     {
         $data = $user;
 
-        return view('pages.users.edit', compact('data'));
+        $roles = Role::get()->pluck('name', 'id');
+
+
+        return view('pages.users.edit', compact('data', 'roles'));
     }
 
     /**
