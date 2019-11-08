@@ -14,6 +14,8 @@ php config:clear
 php cache:clear
 # php artisan adminlte:install
 composer dump-autoload
+php artisan migrate:refresh --seed
+
 npm run dev
 
 chmod -R 777 /var/www/*
