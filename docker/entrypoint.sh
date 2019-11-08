@@ -13,7 +13,7 @@ php route:clear
 php config:clear
 php cache:clear
 # php artisan adminlte:install
-
+composer dump-autoload
 npm run dev
 
 chmod -R 777 /var/www/*

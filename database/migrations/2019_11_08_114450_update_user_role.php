@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRelationshipsToUsersTable extends Migration
+class UpdateUserRole extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddRelationshipsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('role_id')->index();
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->unsignedInteger('role_id')->index()->default('2')->change();
         });
     }
 
@@ -26,8 +25,6 @@ class AddRelationshipsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }
