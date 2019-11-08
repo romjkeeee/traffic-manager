@@ -14,7 +14,7 @@ class AddRelationshipsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('role_id')->index();
+            $table->unsignedInteger('role_id')->index()->default('1')->change();
             $table->foreign('role_id')->references('id')->on('roles');
         });
     }
