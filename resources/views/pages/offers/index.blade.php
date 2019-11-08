@@ -53,10 +53,9 @@
                         <td>{{ $offers->url }}</td>
                         <td>
                             <?php
-                          // dd($countries);
                                 $country = json_decode($offers->countries_id, true);
-                                foreach ($country as $countys ){
-                                    echo $countries[$countys]['name'].' ';
+                                foreach ($country as $countys => $key ){
+                                    echo $countries[$key-1]['name'].' ';
                                 }
                             ?>
 
