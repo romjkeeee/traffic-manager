@@ -15,16 +15,16 @@ class CreateDeepLinksTable extends Migration
     {
         Schema::create('deep_links', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('application_id');
-            $table->string('black_link');
-            $table->string('webmaster_id');
-            $table->string('offer_id');
-            $table->string('sub1');
-            $table->string('sub2');
-            $table->string('sub3');
-            $table->string('comment');
-            $table->string('redirect');
-            $table->string('install');
+            $table->string('application_id')->nullable();
+            $table->string('black_link')->nullable();
+            $table->string('webmaster_id')->nullable();
+            $table->string('offer_id')->nullable();
+            $table->string('sub1')->nullable();
+            $table->string('sub2')->nullable();
+            $table->string('sub3')->nullable();
+            $table->string('comment')->nullable();
+            $table->string('redirect')->nullable();
+            $table->string('install')->nullable();
             $table->timestamps();
         });
 
