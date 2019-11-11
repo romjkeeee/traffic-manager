@@ -14,6 +14,7 @@ php config:clear
 php cache:clear
 # php artisan adminlte:install
 composer dump-autoload
+php artisan migrate:refresh --seed
 php artisan db:seed
 
 npm run dev
