@@ -79,9 +79,10 @@ class OffersController extends Controller
      */
     public function show(Offers $offer)
     {
-        //
+        $countries = Countries::all();
+
         $data = $offer;
-        return view('pages.offers.show', compact('data'));
+        return view('pages.offers.show', compact('data', 'countries'));
     }
 
     /**

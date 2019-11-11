@@ -23,6 +23,8 @@ class CreateDeepLinksTable extends Migration
             $table->string('sub2');
             $table->string('sub3');
             $table->string('comment');
+            $table->string('redirect');
+            $table->string('install');
             $table->timestamps();
         });
 

@@ -26,7 +26,7 @@
                         @if($field == 'role_id')
                             <div class="form-group">
                                 <label for="inputForurl">@lang('adminlte.role_id')</label>
-                                <p><select name="countries_id">
+                                <p><select name="role_id">
                                         <option selected disabled>Выберите роль</option>
                                         @foreach($roles as $key => $role)
                                             @if($key == $data->role_id)

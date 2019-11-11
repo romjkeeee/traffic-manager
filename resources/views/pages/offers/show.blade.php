@@ -19,7 +19,14 @@
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.countries')</label>
-                    <input class="form-control" value="{{ $data->countries_id? $data->countries->name: '' }}" disabled>
+                    <input class="form-control" value="
+<?php
+                    $country = json_decode($data->countries_id, true);
+                    foreach ($country as $countys => $key ){
+                        echo $countries[$key-1]['name'].' ';
+                    }
+                    ?>
+" disabled>
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.user')</label>

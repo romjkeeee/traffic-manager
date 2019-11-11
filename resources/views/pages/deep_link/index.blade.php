@@ -32,6 +32,8 @@
         'sub2',
         'sub3',
         'comment',
+        'redirect',
+        'install',
     );
 
     ?>
@@ -100,6 +102,12 @@
                     <td>
                         <input name="comment" id="comment" type="text" class="form-control" size="16" value="{{ $deeplink->comment }}">
                         <button type="submit"><i class="fas fa-save"></i></button>
+                    </td>
+                    <td>
+                       {{ $deeplink->redirect }}
+                    </td>
+                    <td>
+                       {{ $deeplink->install }}
                     </td>
                     </tr>
                     </form>

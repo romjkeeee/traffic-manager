@@ -90,7 +90,7 @@ class UsersController extends Controller
         $alldata = $request->all();
 
         $user->update($alldata);
-        $data = User::all();
+        $data = $user->all();
 
         return view('pages.users.index', compact('data'));
     }
