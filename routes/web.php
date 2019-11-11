@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/traffic', 'TrafficController@index');
-Route::post('raw', 'RawController@index');
+Route::post('/deep', 'RawController@index');
 
 Route::group(['middleware'=>'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');

@@ -13,7 +13,7 @@ class Raw extends Migration
      */
     public function up()
     {
-        Schema::create('raws', function (Blueprint $table) {
+        Schema::create('raw', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('body')->nullable();
             $table->timestamps();
