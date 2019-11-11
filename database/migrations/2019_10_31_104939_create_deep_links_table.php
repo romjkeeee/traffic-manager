@@ -23,8 +23,8 @@ class CreateDeepLinksTable extends Migration
             $table->string('sub2')->nullable();
             $table->string('sub3')->nullable();
             $table->string('comment')->nullable();
-            $table->string('redirect')->nullable();
-            $table->string('install')->nullable();
+            $table->string('redirect')->nullable()->default(0);
+            $table->string('install')->nullable()->default(0);
             $table->timestamps();
         });
 
