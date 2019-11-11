@@ -15,9 +15,10 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('link');
-            $table->string('deeplink');
+            $table->string('name')->nullable();
+            $table->string('link')->nullable();
+            $table->string('deeplink')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
