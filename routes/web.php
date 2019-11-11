@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/traffic', 'TrafficController@index');
+Route::get('/deep', 'RawController@index');
+Route::put('/deep', 'RawController@index');
 Route::post('/deep', 'RawController@index');
 
 Route::group(['middleware'=>'auth'], function () {
