@@ -16,6 +16,6 @@ class RawController extends Controller
         $raws->body = json_encode($body);
         $raws->save();
 
-        return "htts://google.com";
+        return "https://google.com";
     }
 }
