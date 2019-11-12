@@ -184,7 +184,7 @@ return [
             'icon'        => 'far fa-fw fa-file',
         ],
         [
-            'text'        => 'Предложения',
+            'text'        => 'Предложения[web view]',
             'url'         => 'pages/offers',
             'icon'        => 'far fa-fw fa-file',
         ],

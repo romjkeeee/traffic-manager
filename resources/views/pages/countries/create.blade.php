@@ -15,6 +15,7 @@
                     {{ csrf_field() }}
                     <?php
                     $form_fields = array(
+                        'code',
                         'name',
                     );
                     ?>

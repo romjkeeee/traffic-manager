@@ -14,6 +14,10 @@
         <form role="form" action="">
             <div class="card-body">
                 <div class="form-group">
+                    <label>@lang('adminlte.code')</label>
+                    <input class="form-control" value="<?=$data->code?>" disabled>
+                </div>
+                <div class="form-group">
                     <label>@lang('adminlte.name')</label>
                     <input class="form-control" value="<?=$data->name?>" disabled>
                 </div>

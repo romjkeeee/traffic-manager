@@ -18,6 +18,10 @@
                 {{ csrf_field() }}
 
                     <div class="form-group">
+                        <label for="inputForCode">@lang('adminlte.code')</label>
+                        <input class="form-control"  style="" name="code" id="inputcode"  placeholder="code"  value="{{ $data->code }}" >
+                    </div>
+                    <div class="form-group">
                         <label for="inputForName">@lang('adminlte.name')</label>
                         <input class="form-control"  style="" name="name" id="inputname"  placeholder="name"  value="{{ $data->name }}" >
                     </div>

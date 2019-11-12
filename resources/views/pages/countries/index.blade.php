@@ -38,6 +38,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>@lang('adminlte.code')</th>
                             <th>@lang('adminlte.name')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
@@ -46,6 +47,7 @@
                         @foreach ($data as $countries)
                             <tr>
                                 <td>{{ $countries->id }}</td>
+                                <td>{{ $countries->code }}</td>
                                 <td>{{ $countries->name }}</td>
                                 <td>
                                     <a href="{{ route('countries.show',[$countries->id]) }}"><i class="fas fa-eye"></i></a>
