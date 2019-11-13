@@ -27,6 +27,10 @@ class RawController extends Controller
                 echo null;
             }else{
                 $exp = explode("_", $data['Param']);
+                if( count($exp) != 2)
+                {
+                    echo null;
+                }else{
                 $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
 
                 $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first();
@@ -36,6 +40,7 @@ class RawController extends Controller
                 }else{
                     echo null;
                 }
+            }
             }
 
         }
