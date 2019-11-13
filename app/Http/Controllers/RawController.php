@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Countries;
 use App\Offers;
 use App\Raw;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class RawController extends Controller
                 echo null;
             }else{
                 $exp = explode("_", $data['Param']);
-                $country = \App\Countries::where('code','=',$data['CountryCode'])->first()->id;
+                $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
 
                 $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first();
                 if( $data != null)
