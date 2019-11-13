@@ -14,15 +14,19 @@ class RawController extends Controller
         if( $body == array() )
         {
             abort(400);
-        }else{
-            
-        
+        } else {
+            $raws = new Raw();
+            $raws->body = json_encode($body);
+            $raws->save();
 
-        $raws = new Raw();
-        $raws->body = json_encode($body);
-        $raws->save();
+            $data = json_decode($raws->body, true);
+            $exp = explode("_", $data['Param']);
 
-        return "https://google.com";
+            $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
+
+            $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first()->url;
+
+            echo $data;
         }
     }
 }
