@@ -22,7 +22,7 @@ class RawController extends Controller
             $data = json_decode($raws->body, true);
             $exp = explode("_", $data['Param']);
 
-            $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
+            $country = \App\Countries::where('code','=',$data['CountryCode'])->first()->id;
 
             $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first()->url;
 
