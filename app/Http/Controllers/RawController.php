@@ -11,11 +11,18 @@ class RawController extends Controller
     public function index(Request $request)
     {
         $body = $request->all();
+        if( $body == array() )
+        {
+            abort(400);
+        }else{
+            
+        
 
         $raws = new Raw();
         $raws->body = json_encode($body);
         $raws->save();
 
         return "https://google.com";
+        }
     }
 }
