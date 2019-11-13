@@ -62,7 +62,7 @@ class OffersController extends Controller
 
         if($request->application_id) {
             $user_app = Application::where('id','=',$request->application_id)->first();
-            $deep_link->deeplink = $user_app->link_android . '&param=' . $deep_link->id;
+            $deep_link->deeplink = $user_app->link_android . '&param=' . $request->application_id.'_'.$request->user_id;
 
             $deep_link->update($data);
         }
@@ -132,7 +132,7 @@ class OffersController extends Controller
 
         if($request->application_id) {
             $user_app = Application::where('id','=',$request->application_id)->first();
-            $offer->deeplink = $user_app->link_android . '&param=' . $offer->id;
+            $offer->deeplink = $user_app->link_android . '&param=' . $request->application_id.'_'.$request->user_id;
 
             $offer->update($data);
         }

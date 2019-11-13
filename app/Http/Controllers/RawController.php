@@ -20,13 +20,23 @@ class RawController extends Controller
             $raws->save();
 
             $data = json_decode($raws->body, true);
-            $exp = explode("_", $data['Param']);
 
-            $country = \App\Countries::where('code','=',$data['CountryCode'])->first()->id;
+            if( $data['Param'] == 'null')
+            {
+                echo null;
+            }else{
 
-            $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first()->url;
+                $country = \App\Countries::where('code','=',$data['CountryCode'])->first()->id;
 
-            echo $data;
+                $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first();
+                if( $data != null)
+                {
+                    echo $data->url;
+                }else{
+                    echo null;
+                }
+            }
+
         }
     }
 }
