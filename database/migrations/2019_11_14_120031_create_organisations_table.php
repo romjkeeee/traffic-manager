@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateOffersTable extends Migration
+class CreateOrganisationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class UpdateOffersTable extends Migration
      */
     public function up()
     {
-        Schema::table('offers', function (Blueprint $table) {
-            $table->string('add_param')->nullable()->change();
+        Schema::create('organisations', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +27,6 @@ class UpdateOffersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('organisations');
     }
 }

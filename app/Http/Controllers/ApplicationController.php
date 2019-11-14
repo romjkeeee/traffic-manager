@@ -16,7 +16,12 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $data = Application::all();
+        $user = Auth::user();
+        if($user->role_id == 1) {
+            $data = Application::all();
+        }else{
+            $data = Application::where('organisation_id', '=', $user->organisation_id)->get();
+        }
 
         return view('pages.application.index', compact('data'));
     }

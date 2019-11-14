@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>@lang('adminlte.users')</h1>
+                <h1>@lang('adminlte.organisation')</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-                    <li class="breadcrumb-item active">@lang('adminlte.users')</li>
+                    <li class="breadcrumb-item active">@lang('adminlte.organisation')</li>
                 </ol>
             </div>
         </div>
@@ -20,16 +20,16 @@
 @stop
 
 @section('content')
-{{--    <div class="primary">--}}
-{{--        <p>--}}
-{{--            <a href="{{ route('users.create') }}" class="btn btn-success btn-lg">Создать</a>--}}
-{{--        </p>--}}
-{{--    </div>--}}
+    <div class="primary">
+        <p>
+            <a href="{{ route('organisation.create') }}" class="btn btn-success btn-lg">Создать</a>
+        </p>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">@lang('adminlte.users')</h3>
+                    <h3 class="card-title">@lang('adminlte.organisation')</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -37,24 +37,18 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>@lang('adminlte.name_user')</th>
-                            <th>@lang('adminlte.email')</th>
-                            <th>@lang('adminlte.role_id')</th>
-                            <th>@lang('adminlte.organisation_id')</th>
+                            <th>@lang('adminlte.name')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($data as $user)
+                        @foreach ($data as $organisation)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td style="width: 100%">{{ $user->email }}</td>
-                                <td>{{ $user->role_id? $user->roles->name: '' }}</td>
-                                <td>{{ $user->organisation? $user->organisation->name: '' }}</td>
+                                <td>{{ $organisation->id }}</td>
+                                <td>{{ $organisation->name }}</td>
                                 <td>
-                                    <a href="{{ route('users.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
-                                    <a href="{{ route('users.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('organisation.show',[$organisation->id]) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('organisation.edit',[$organisation->id]) }}"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach

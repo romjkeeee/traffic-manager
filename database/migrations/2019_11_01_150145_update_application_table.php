@@ -19,6 +19,7 @@ class UpdateApplicationTable extends Migration
             $table->string('link_ios')->nullable();
             $table->string('deeplink')->nullable()->change();
             $table->string('comment')->nullable()->change();
+            $table->integer('organisation_id')->nullable();
             $table->dropColumn('link');
         });
     }

@@ -49,5 +49,6 @@ return [
     'redirect'    => 'Переходы',
     'install'    => 'Установки',
     'code'    => 'Код',
+    'organisation'    => 'Организации',
 
 ];

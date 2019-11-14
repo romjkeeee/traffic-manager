@@ -20,11 +20,13 @@
 @stop
 
 @section('content')
-    <div class="primary">
+    @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+        <div class="primary">
         <p>
             <a href="{{ route('application.create') }}" class="btn btn-success btn-lg">Создать</a>
         </p>
     </div>
+        @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -54,10 +56,12 @@
                                 <td>{{ $application->link_ios }}</td>
                                 <td style="width: 100%">{{ $application->deeplink }}</td>
                                 <td>{{ $application->comment }}</td>
+                                @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
                                 <td>
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
                                 </td>
+                                    @endif
                             </tr>
                         @endforeach
                         </tbody>

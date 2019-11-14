@@ -7,6 +7,7 @@ use App\Countries;
 use App\Offers;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OffersController extends Controller
 {
@@ -17,8 +18,12 @@ class OffersController extends Controller
      */
     public function index()
     {
-        $data = Offers::with('user')->get();
-
+        $user = Auth::user();
+        if($user->role_id == 1) {
+            $data = Offers::with('user')->get();
+        }else{
+            $data = Offers::with('user')->where('organisation_id', '=', $user->organisation_id)->get();
+        }
         $countries = Countries::all();
 
         return view('pages.offers.index', compact('data', 'countries'));

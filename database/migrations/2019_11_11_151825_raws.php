@@ -15,7 +15,7 @@ class Raws extends Migration
     {
         Schema::create('raws', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('body')->nullable();
+            $table->text('body')->nullable();
             $table->timestamps();
         });
     }

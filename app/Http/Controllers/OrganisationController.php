@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Organisation;
-use App\Role;
-use App\User;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class OrganisationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::all();
-
-        return view('pages.users.index', compact('data'));
+        $data = Organisation::all();
+        return view('pages.organisation.index', compact('data'));
     }
 
     /**
@@ -28,7 +25,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('pages.users.create');
+        return view('pages.organisation.create');
     }
 
     /**
@@ -39,71 +36,54 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $users = new User();
-
-        $users->create($data);
-
-        $data = $users->all();
-
-        return view('pages.users.index', compact('data'));
+        Organisation::create($request->all());
+        return redirect()->route('organisation.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Offers  $offers
+     * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Organisation $organisation)
     {
-        //
-        $data = $user;
-        return view('pages.users.show', compact('data'));
+        $data = $organisation;
+        return view('pages.organisation.show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Offers  $offers
+     * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Organisation $organisation)
     {
-        $data = $user;
-
-        $roles = Role::get()->pluck('name', 'id');
-
-        $organisation = Organisation::get()->pluck('name', 'id');
-
-        return view('pages.users.edit', compact('data', 'roles', 'organisation'));
+        $data = $organisation;
+        return view('pages.organisation.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Offers  $offers
+     * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Organisation $organisation)
     {
-        $alldata = $request->all();
-
-        $user->update($alldata);
-        $data = $user->all();
-
-        return view('pages.users.index', compact('data'));
+        $organisation->update($request->all());
+        return redirect()->route('organisation.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Offers  $offers
+     * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Organisation $organisation)
     {
         //
     }

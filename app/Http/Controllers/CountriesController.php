@@ -37,9 +37,9 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        $deep_link = new Countries();
-        $deep_link->fill($request->all());
-        $deep_link->save();
+        $countries = new Countries();
+        $countries->fill($request->all());
+        $countries->save();
 
         $data = Countries::all();
         return view('pages.countries.index', compact('data'));

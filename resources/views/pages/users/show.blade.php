@@ -26,6 +26,11 @@
 
                     <input class="form-control" value="{{ $data->role_id? $data->roles->name: ''  }}" disabled>
                 </div>
+                <div class="form-group">
+                    <label>@lang('adminlte.organisation_id')</label>
+
+                    <input class="form-control" value="{{ $data->organisation_id? $data->organisation->name: ''  }}" disabled>
+                </div>
             </div>
             <!-- /.card-body -->
             <a href="{{ route('users.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>

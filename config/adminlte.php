@@ -189,8 +189,8 @@ return [
             'icon'        => 'far fa-fw fa-file',
         ],
         [
-            'text'        => 'Внешние ссылки',
-            'url'         => 'pages/deep_link',
+            'text'        => 'Организации',
+            'url'         => 'pages/organisation',
             'icon'        => 'far fa-fw fa-file',
         ],
         [

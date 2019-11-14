@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email','191')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedInteger('role_id')->index()->default('2');
-
+            $table->unsignedInteger('role_id')->index()->default('5');
+            $table->integer('organisation_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

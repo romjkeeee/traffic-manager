@@ -19,6 +19,7 @@
                         'name',
                         'email',
                         'role_id',
+                        'organisation_id',
                     );
 
                     ?>
@@ -33,6 +34,20 @@
                                                 <option value="{{ $key }}" selected>{{ $role }}</option>
                                             @else
                                                 <option value="{{ $key }}">{{ $role }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select></p>
+                            </div>
+                            @elseif($field == 'organisation_id')
+                            <div class="form-group">
+                                <label for="inputForurl">@lang('adminlte.organisation_id')</label>
+                                <p><select name="organisation_id">
+                                        <option selected disabled>Выберите организацию</option>
+                                        @foreach($organisation as $key => $org)
+                                            @if($key == $data->organisation_id)
+                                                <option value="{{ $key }}" selected>{{ $org }}</option>
+                                            @else
+                                                <option value="{{ $key }}">{{ $org }}</option>
                                             @endif
                                         @endforeach
                                     </select></p>

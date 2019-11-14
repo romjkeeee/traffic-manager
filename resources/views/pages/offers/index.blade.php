@@ -20,11 +20,13 @@
 @stop
 
 @section('content')
+    @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
     <div class="primary">
         <p>
             <a href="{{ route('offers.create') }}" class="btn btn-success btn-lg">Создать</a>
         </p>
     </div>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -44,6 +46,8 @@
                             <th>@lang('adminlte.add_param')</th>
                             <th>@lang('adminlte.comment')</th>
                             <th>Deep Link</th>
+                            <th>Redirect</th>
+                            <th>Install</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
                         </thead>
@@ -66,10 +70,14 @@
                         <td>{{ $offers->add_param }}</td>
                         <td>{{ $offers->comment }}</td>
                         <td>{{ $offers->deeplink }}</td>
-                        <td>
+                        <td>{{ $offers->redirect }}</td>
+                        <td>{{ $offers->install }}</td>
+                            @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+                            <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>
                         </td>
+                                @endif
                         </tr>
                         @endforeach
                         </tbody>

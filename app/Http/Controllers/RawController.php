@@ -6,6 +6,7 @@ use App\Countries;
 use App\Offers;
 use App\Raw;
 use Illuminate\Http\Request;
+use function Sodium\increment;
 
 class RawController extends Controller
 {
@@ -35,6 +36,8 @@ class RawController extends Controller
                     if( $data != null)
                     {
                         echo $data->url;
+                        $data->redirect++;
+                        $data->update();
                     }else{
                         echo null;
                     }
@@ -45,6 +48,8 @@ class RawController extends Controller
                     if( $data != null)
                     {
                         echo $data->url;
+                        $data->redirect++;
+                        $data->update();
                     }else{
                         echo null;
                     }
