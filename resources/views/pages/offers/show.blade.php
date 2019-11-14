@@ -40,6 +40,12 @@
                     <label>@lang('adminlte.deeplink')</label>
                     <input class="form-control" value="{{ $data->deeplink }}" disabled>
                 </div>
+                
+                <div class="form-group">
+                    <label for="inputForadd_param">@lang('adminlte.add_param')</label>
+                    <input class="form-control" value="{{ $data->add_param }}" type="number" step="1" min="0" style="" name="add_param" id="add_param" >
+                </div>
+
                 <div class="form-group">
                     <label>@lang('adminlte.comment')</label>
                     <input class="form-control" value="{{ $data->comment }}" disabled>

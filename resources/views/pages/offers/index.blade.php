@@ -41,6 +41,7 @@
                             <th>@lang('adminlte.countries')</th>
                             <th>@lang('adminlte.application')</th>
                             <th>@lang('adminlte.user')</th>
+                            <th>@lang('adminlte.add_param')</th>
                             <th>@lang('adminlte.comment')</th>
                             <th>Deep Link</th>
                             <th>@lang('adminlte.action')</th>
@@ -62,6 +63,7 @@
                         </td>
                         <td>{{ $offers->application_id? $offers->applications->name: '' }}</td>
                         <td>{{ $offers->user_id? $offers->user->email: '' }}</td>
+                        <td>{{ $offers->add_param }}</td>
                         <td>{{ $offers->comment }}</td>
                         <td>{{ $offers->deeplink }}</td>
                         <td>

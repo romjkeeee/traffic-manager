@@ -29,18 +29,28 @@ class RawController extends Controller
                 $exp = explode("_", $data['Param']);
                 if( count($exp) != 2)
                 {
-                    echo null;
-                }else{
-                $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
+                    $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
 
-                $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first();
-                if( $data != null)
-                {
-                    echo $data->url;
+                    $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->first();
+                    if( $data != null)
+                    {
+                        echo $data->url;
+                    }else{
+                        echo null;
+                    }
+                }elseif(count($exp) != 3){
+                    $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
+
+                    $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->where('add_param',$exp[2])->first();
+                    if( $data != null)
+                    {
+                        echo $data->url;
+                    }else{
+                        echo null;
+                    }
                 }else{
                     echo null;
                 }
-            }
             }
 
         }

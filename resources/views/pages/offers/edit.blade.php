@@ -68,6 +68,12 @@
                                 @endforeach
                             </select></p>
                     </div>
+
+                    <div class="form-group">
+                        <label for="inputForadd_param">@lang('adminlte.add_param')</label>
+                        <input class="form-control" value="{{ $data->add_param }}" type="number" step="1" min="0" style="" name="add_param" id="add_param" >
+                    </div>
+
                     <div class="form-group">
                         <label for="inputForcomment">@lang('adminlte.comment')</label>
                         <input class="form-control"  style="" name="comment" id="inputcomment" value="{{ $data->comment }}">

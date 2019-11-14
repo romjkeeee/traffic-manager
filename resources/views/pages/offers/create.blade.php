@@ -55,6 +55,11 @@
                         </select></p>
                     </div>
                     <div class="form-group">
+                        <label for="inputForadd_param">@lang('adminlte.add_param')</label>
+                        <input class="form-control" value="0" type="number" step="1" min="0" style="" name="add_param" id="add_param" >
+                    </div>
+
+                    <div class="form-group">
                         <label for="inputForcomment">@lang('adminlte.comment')</label>
                         <input class="form-control"  style="" name="comment" id="inputurl" >
                     </div>
