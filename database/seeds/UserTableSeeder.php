@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
                 'name' => 'Admin',
                 'password' => '$2y$10$J/dkI68dIt0tx3fPIPjWxuc4n.NqHLfsQkieLQcf6NcOjXLrhWJei',
                 'email_verified_at' => NULL,
-                'role_id' => 1,
+                'role' => 'SuperAdmin',
                 'remember_token' => NULL,
             ]
         ];

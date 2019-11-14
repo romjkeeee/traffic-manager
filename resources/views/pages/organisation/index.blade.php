@@ -20,11 +20,13 @@
 @stop
 
 @section('content')
-    <div class="primary">
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+        <div class="primary">
         <p>
             <a href="{{ route('organisation.create') }}" class="btn btn-success btn-lg">Создать</a>
         </p>
     </div>
+        @endif
     <div class="row">
         <div class="col-12">
             <div class="card">

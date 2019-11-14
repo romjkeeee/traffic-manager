@@ -39,7 +39,7 @@
                             <th>ID</th>
                             <th>@lang('adminlte.name_user')</th>
                             <th>@lang('adminlte.email')</th>
-                            <th>@lang('adminlte.role_id')</th>
+                            <th>@lang('adminlte.role')</th>
                             <th>@lang('adminlte.organisation_id')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
@@ -50,8 +50,8 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td style="width: 100%">{{ $user->email }}</td>
-                                <td>{{ $user->role_id? $user->roles->name: '' }}</td>
-                                <td>{{ $user->organisation? $user->organisation->name: '' }}</td>
+                                <td>{{ $user->role }}</td>
+                                <td>{{ $user->organisation_id }}</td>
                                 <td>
                                     <a href="{{ route('users.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('users.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>

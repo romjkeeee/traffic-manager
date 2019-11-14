@@ -18,13 +18,13 @@
                     $form_fields = array(
                         'name',
                         'email',
-                        'role_id',
+                        'role',
                         'organisation_id',
                     );
 
                     ?>
                     @foreach($form_fields as $field)
-                        @if($field == 'role_id')
+                        @if($field == 'role')
                             <div class="form-group">
                                 <label for="inputForurl">@lang('adminlte.role_id')</label>
                                 <p><select name="role_id">

@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
         <div class="primary">
         <p>
             <a href="{{ route('application.create') }}" class="btn btn-success btn-lg">Создать</a>
@@ -56,7 +56,7 @@
                                 <td>{{ $application->link_ios }}</td>
                                 <td style="width: 100%">{{ $application->deeplink }}</td>
                                 <td>{{ $application->comment }}</td>
-                                @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+                                @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
                                 <td>
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>

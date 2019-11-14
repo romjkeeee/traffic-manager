@@ -20,8 +20,8 @@
 @stop
 
 @section('content')
-    @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
-    <div class="primary">
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+        <div class="primary">
         <p>
             <a href="{{ route('offers.create') }}" class="btn btn-success btn-lg">Создать</a>
         </p>
@@ -72,7 +72,7 @@
                         <td>{{ $offers->deeplink }}</td>
                         <td>{{ $offers->redirect }}</td>
                         <td>{{ $offers->install }}</td>
-                            @if(\Auth::user()->role_id == 1 || \Auth::user()->role_id == 2)
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
                             <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>

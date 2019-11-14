@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Organisation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrganisationController extends Controller
 {
@@ -14,7 +15,12 @@ class OrganisationController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
         $data = Organisation::all();
+        }else{
+            $data = Organisation::where('id','=',$user->organisation_id);
+        }
         return view('pages.organisation.index', compact('data'));
     }
 
@@ -25,7 +31,12 @@ class OrganisationController extends Controller
      */
     public function create()
     {
-        return view('pages.organisation.create');
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            return view('pages.organisation.create');
+        }else{
+            return 'Error';
+        }
     }
 
     /**
@@ -60,7 +71,12 @@ class OrganisationController extends Controller
      */
     public function edit(Organisation $organisation)
     {
-        $data = $organisation;
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $data = $organisation;
+        }else{
+            return 'Error';
+        }
         return view('pages.organisation.edit', compact('data'));
     }
 
