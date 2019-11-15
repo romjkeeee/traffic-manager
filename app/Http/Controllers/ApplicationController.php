@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Application;
+use App\Organisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,9 @@ class ApplicationController extends Controller
             $data = Application::where('organisation_id', '=', $user->organisation_id)->get();
         }
 
-        return view('pages.application.index', compact('data'));
+        $organisation = Organisation::all();
+
+        return view('pages.application.index', compact('data', 'organisation'));
     }
 
     /**
@@ -34,7 +37,7 @@ class ApplicationController extends Controller
     public function create()
     {
         $user = Auth::user();
-        if($user->role == 'SuperAdmin' || $user->role == 'Admin') {
+        if($user->role == 'SuperAdmin' || $user->role == 'Admin'|| $user->role == 'Webmaster') {
             return view('pages.application.create');
             }else{
             abort(404);
@@ -100,9 +103,7 @@ class ApplicationController extends Controller
             $application->organisation_id = Auth::user()->organisation_id;
         }
         $application->update($alldata);
-
-        $data = $application->all();
-        return view('pages.application.index', compact('data'));
+        return redirect()->route('application.index');
     }
 
     /**

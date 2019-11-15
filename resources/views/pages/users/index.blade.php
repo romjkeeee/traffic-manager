@@ -20,11 +20,13 @@
 @stop
 
 @section('content')
-{{--    <div class="primary">--}}
-{{--        <p>--}}
-{{--            <a href="{{ route('users.create') }}" class="btn btn-success btn-lg">Создать</a>--}}
-{{--        </p>--}}
-{{--    </div>--}}
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+        <div class="primary">
+        <p>
+            <a href="{{ route('users.create') }}" class="btn btn-success btn-lg">Создать</a>
+        </p>
+    </div>
+        @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -36,11 +38,10 @@
                     <table   class="table table-responsive table-responsive" id="myTable">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>@lang('adminlte.name_user')</th>
                             <th>@lang('adminlte.email')</th>
                             <th>@lang('adminlte.role')</th>
-                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+                            @if(\Auth::user()->role == 'SuperAdmin')
                             <th>@lang('adminlte.organisation_id')</th>
                             <th>@lang('adminlte.action')</th>
                                 @endif
@@ -49,12 +50,11 @@
                         <tbody>
                         @foreach ($data as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td style="width: 100%">{{ $user->email }}</td>
                                 <td>{{ $user->role }}</td>
-                                @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
-                                    <td>{{ $user->organisation_id }}</td>
+                                @if(\Auth::user()->role == 'SuperAdmin')
+                                    <td>{{ $user->organisation_id? $user->organisation->name: '' }}</td>
                                     <td>
                                     <a href="{{ route('users.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('users.edit',[$user->id]) }}"><i class="fas fa-edit"></i></a>

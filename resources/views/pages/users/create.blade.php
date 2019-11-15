@@ -16,8 +16,8 @@
                     <?php
                     $form_fields = array(
                         'name',
+                        'password',
                         'email',
-                        'role',
                     );
                     ?>
                     @foreach($form_fields as $field)
@@ -26,9 +26,27 @@
                             <input class="form-control"  style="" name="{{ $field }}" id="input{{ $field }}" >
                         </div>
                     @endforeach
+                    <div class="form-group">
+                        <label for="inputForurl">@lang('adminlte.role')</label>
+                        <p><select name="role">
+                                <option selected disabled>Выберите роль</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Company">Company</option>
+                                <option value="Webmaster">Webmaster</option>
+                            </select></p>
+                    </div>
 
-
-
+                    @if(\Auth::user()->role == 'SuperAdmin')
+                        <div class="form-group">
+                            <label>@lang('adminlte.organisation')</label>
+                            <p><select name="organisation_id">
+                                    <option selected disabled>Выберите организацию</option>
+                                    @foreach($organisation as $org)
+                                        <option value="{{ $org->id }}">{{ $org->name }}</option>
+                                    @endforeach
+                                </select></p>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary margin-r-5">@lang('adminlte.save')</button>
                         <a href="{{ route('users.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>

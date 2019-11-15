@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
         <div class="primary">
         <p>
             <a href="{{ route('offers.create') }}" class="btn btn-success btn-lg">Создать</a>
@@ -48,7 +48,7 @@
                             <th>Deep Link</th>
                             <th>@lang('adminlte.redirect')</th>
                             <th>@lang('adminlte.install')</th>
-                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
                             <th>@lang('adminlte.organisation_id')</th>
                             <th>@lang('adminlte.action')</th>
                             @endif
@@ -75,8 +75,8 @@
                         <td>{{ $offers->deeplink }}</td>
                         <td>{{ $offers->redirect }}</td>
                         <td>{{ $offers->install }}</td>
-                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
-                                <td>{{ $offers->organisation_id }}</td>
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
+                                <td>{{ $offers->organisation_id? $offers->organisation->name: '' }}</td>
                                 <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>

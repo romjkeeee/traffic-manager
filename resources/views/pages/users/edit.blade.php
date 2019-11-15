@@ -26,7 +26,7 @@
                     @foreach($form_fields as $field)
                         @if($field == 'role')
                             <div class="form-group">
-                                <label for="inputForurl">@lang('adminlte.role_id')</label>
+                                <label for="inputForurl">@lang('adminlte.role')</label>
                                 <p><select name="role">
                                         <option selected disabled>Выберите роль</option>
                                                 <option value="Admin">Admin</option>
@@ -55,6 +55,7 @@
                         </div>
                         @endif
                     @endforeach
+
 
 
 

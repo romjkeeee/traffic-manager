@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
         <div class="primary">
         <p>
             <a href="{{ route('application.create') }}" class="btn btn-success btn-lg">Создать</a>
@@ -44,7 +44,7 @@
                             <th>@lang('adminlte.link_ios')</th>
                             <th>@lang('adminlte.deeplink')</th>
                             <th>@lang('adminlte.comment')</th>
-                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
                             <th>@lang('adminlte.organisation_id')</th>
                             <th>@lang('adminlte.action')</th>
                             @endif
@@ -59,8 +59,8 @@
                                 <td>{{ $application->link_ios }}</td>
                                 <td style="width: 100%">{{ $application->deeplink }}</td>
                                 <td>{{ $application->comment }}</td>
-                                @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
-                                <td>{{ $application->organisation_id }}</td>
+                                @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
+                                <td>{{ $application->organisation_id? $application->organisation->name: '' }}</td>
                                     <td>
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>

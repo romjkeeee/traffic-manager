@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Countries;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CountriesController extends Controller
 {
@@ -14,9 +15,13 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        $data = Countries::all();
-
-        return view('pages.countries.index', compact('data'));
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $data = Countries::all();
+            return view('pages.countries.index', compact('data'));
+        }else{
+            abort(404);
+        }
     }
 
     /**

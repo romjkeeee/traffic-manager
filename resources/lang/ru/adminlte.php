@@ -50,6 +50,7 @@ return [
     'install'    => 'Установки',
     'code'    => 'Код',
     'organisation'    => 'Организации',
+    'organisation_id'    => 'Организация',
     'add_param'    => 'Add Param',
 
 ];

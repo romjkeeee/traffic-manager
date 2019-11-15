@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Application;
 use App\Countries;
 use App\Offers;
+use App\Organisation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,9 @@ class OffersController extends Controller
         }
         $countries = Countries::all();
 
-        return view('pages.offers.index', compact('data', 'countries'));
+        $organisation = Organisation::all();
+
+        return view('pages.offers.index', compact('data', 'countries', 'organisation'));
     }
 
     /**
@@ -37,13 +40,16 @@ class OffersController extends Controller
     public function create()
     {
         $users = Auth::user();
-        if($users->role == 'SuperAdmin' || $users->role == 'Admin' || $users->role == 'Webmaster') {
+        if($users->role == 'SuperAdmin') {
+            $app = Application::get()->pluck('name', 'id');
+            $countries = Countries::all();
+            $user = User::get()->pluck('email', 'id');
 
-        $app = Application::get()->pluck('name', 'id');
-
-        $countries = Countries::all();
-
-        $user = User::get()->pluck('email', 'id');
+            return view('pages.offers.create', compact('app', 'countries', 'user'));
+        }elseif($users->role == 'Admin' || $users->role == 'Webmaster'){
+            $app = Application::where('organisation_id','=',$users->organisation_id)->get()->pluck('name', 'id');
+            $countries = Countries::all();
+            $user = User::where('organisation_id','=',$users->organisation_id)->get()->pluck('email', 'id');
 
             return view('pages.offers.create', compact('app', 'countries', 'user'));
         }else{
@@ -109,15 +115,19 @@ class OffersController extends Controller
      */
     public function edit(Offers $offer)
     {
-        $app = Application::get()->pluck('name', 'id');
-
-        $countries = Countries::All();
-
-        $user = User::get()->pluck('email', 'id');
-
-        $data = $offer;
-
-        return view('pages.offers.edit', compact('data','app', 'countries', 'user'));
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $app = Application::get()->pluck('name', 'id');
+            $countries = Countries::All();
+            $user = User::get()->pluck('email', 'id');
+            $data = $offer;
+        }elseif($user->role == 'Webmaster'){
+            $app = Application::where('organisation_id','=',$user->organisation_id)->get()->pluck('name', 'id');
+            $countries = Countries::All();
+            $user = User::where('organisation_id','=',$user->organisation_id)->get()->pluck('email', 'id');
+            $data = $offer;
+        }
+        return view('pages.offers.edit', compact('data', 'app', 'countries', 'user'));
     }
 
     /**

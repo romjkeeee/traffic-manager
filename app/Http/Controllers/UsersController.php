@@ -7,6 +7,7 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -20,11 +21,14 @@ class UsersController extends Controller
         $user = Auth::user();
         if($user->role == 'SuperAdmin') {
             $data = User::all();
+        }elseif($user->role == 'Webmaster'){
+            abort(404);
         }else{
             $data = User::where('organisation_id','=',$user->organisation_id)->get();
         }
+        $org = Organisation::all();
 
-        return view('pages.users.index', compact('data'));
+        return view('pages.users.index', compact('data','org'));
     }
 
     /**
@@ -34,7 +38,16 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('pages.users.create');
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $organisation = Organisation::all();
+
+            return view('pages.users.create', compact('organisation'));
+        }elseif($user->role == 'Admin'){
+            return view('pages.users.create');
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -46,14 +59,20 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $users = Auth::user();
+        $user = new User();
+        $user->name = $data['name'];
+        $user->password = Hash::make($data['password']);
+        $user->email = $data['email'];
+        $user->role = $data['role'];
+        if($users->role == 'SuperAdmin') {
+            $user->organisation_id = $data['organisation_id'];
+        }else{
+            $user->organisation_id = $users->organisation_id;
+        }
+        $user->save();
 
-        $users = new User();
-
-        $users->create($data);
-
-        $data = $users->all();
-
-        return view('pages.users.index', compact('data'));
+        return redirect()->route('users.index');
     }
 
     /**
