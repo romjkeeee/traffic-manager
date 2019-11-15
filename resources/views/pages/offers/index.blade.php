@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
         <div class="primary">
         <p>
             <a href="{{ route('offers.create') }}" class="btn btn-success btn-lg">Создать</a>
@@ -46,8 +46,8 @@
                             <th>@lang('adminlte.add_param')</th>
                             <th>@lang('adminlte.comment')</th>
                             <th>Deep Link</th>
-                            <th>Redirect</th>
-                            <th>Install</th>
+                            <th>@lang('adminlte.redirect')</th>
+                            <th>@lang('adminlte.install')</th>
                             <th>@lang('adminlte.action')</th>
                         </tr>
                         </thead>
@@ -72,7 +72,7 @@
                         <td>{{ $offers->deeplink }}</td>
                         <td>{{ $offers->redirect }}</td>
                         <td>{{ $offers->install }}</td>
-                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
                             <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>

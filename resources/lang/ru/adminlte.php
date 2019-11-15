@@ -44,11 +44,12 @@ return [
     'comment'    => 'Комментарий',
     'user'    => 'webmaster',
     'name_user'    => 'Имя пользователя',
-    'role_id'    => 'Роль',
+    'role'    => 'Роль',
     'users'    => 'Пользователи',
     'redirect'    => 'Переходы',
     'install'    => 'Установки',
     'code'    => 'Код',
     'organisation'    => 'Организации',
+    'add_param'    => 'Add Param',
 
 ];

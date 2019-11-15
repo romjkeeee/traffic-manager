@@ -27,15 +27,11 @@
                         @if($field == 'role')
                             <div class="form-group">
                                 <label for="inputForurl">@lang('adminlte.role_id')</label>
-                                <p><select name="role_id">
+                                <p><select name="role">
                                         <option selected disabled>Выберите роль</option>
-                                        @foreach($roles as $key => $role)
-                                            @if($key == $data->role_id)
-                                                <option value="{{ $key }}" selected>{{ $role }}</option>
-                                            @else
-                                                <option value="{{ $key }}">{{ $role }}</option>
-                                            @endif
-                                        @endforeach
+                                                <option value="Admin">Admin</option>
+                                                <option value="Company">Company</option>
+                                                <option value="Webmaster">Webmaster</option>
                                     </select></p>
                             </div>
                             @elseif($field == 'organisation_id')

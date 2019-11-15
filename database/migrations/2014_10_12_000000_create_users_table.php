@@ -15,18 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('role', [
-                'SuperAdmin',
-                'Admin',
-                'Company',
-                'WebMaster',
-                'User',
-            ])->default('user');
+            $table->string('role')->default('user')->nullable();
             $table->string('name');
             $table->string('email','191')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('organisation_id')->default('TrafficManager')->nullable();
+            $table->integer('organisation_id')->default(0)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

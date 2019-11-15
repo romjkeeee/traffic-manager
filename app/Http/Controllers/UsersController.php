@@ -6,6 +6,7 @@ use App\Organisation;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -16,7 +17,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::all();
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $data = User::all();
+        }else{
+            $data = User::where('organisation_id','=',$user->organisation_id)->get();
+        }
 
         return view('pages.users.index', compact('data'));
     }
@@ -73,11 +79,9 @@ class UsersController extends Controller
     {
         $data = $user;
 
-        $roles = Role::get()->pluck('name', 'id');
-
         $organisation = Organisation::get()->pluck('name', 'id');
 
-        return view('pages.users.edit', compact('data', 'roles', 'organisation'));
+        return view('pages.users.edit', compact('data', 'organisation'));
     }
 
     /**

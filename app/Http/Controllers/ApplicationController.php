@@ -33,8 +33,12 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-
-        return view('pages.application.create');
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin' || $user->role == 'Admin') {
+            return view('pages.application.create');
+            }else{
+            abort(404);
+        }
     }
 
     /**
@@ -45,12 +49,14 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        $application = new Application();
-        $application->fill($request->all());
-        $application->save();
+        $user = Auth::user();
+        $application = Application::create($request->all());
+        if($user->role != 'SuperAdmin') {
+            $application->organisation_id = Auth::user()->organisation_id;
+            $application->update();
+        }
 
-        $data = Application::all();
-        return view('pages.application.index', compact('data'));
+        return redirect()->route('application.index');
     }
 
     /**
@@ -88,9 +94,11 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, Application $application)
     {
-
+        $user = Auth::user();
         $alldata = $request->all();
-
+        if($user->role != 'SuperAdmin') {
+            $application->organisation_id = Auth::user()->organisation_id;
+        }
         $application->update($alldata);
 
         $data = $application->all();

@@ -19,7 +19,7 @@ class OrganisationController extends Controller
         if($user->role == 'SuperAdmin') {
         $data = Organisation::all();
         }else{
-            $data = Organisation::where('id','=',$user->organisation_id);
+            $data = Organisation::where('id','=',$user->organisation_id)->get();
         }
         return view('pages.organisation.index', compact('data'));
     }
@@ -35,7 +35,7 @@ class OrganisationController extends Controller
         if($user->role == 'SuperAdmin') {
             return view('pages.organisation.create');
         }else{
-            return 'Error';
+            abort(404);
         }
     }
 
@@ -72,10 +72,10 @@ class OrganisationController extends Controller
     public function edit(Organisation $organisation)
     {
         $user = Auth::user();
-        if($user->role == 'SuperAdmin') {
-            $data = $organisation;
+        if ($user->organisation_id == $organisation->id || $user->role == 'SuperAdmin') {
+        $data = $organisation;
         }else{
-            return 'Error';
+            abort(404);
         }
         return view('pages.organisation.edit', compact('data'));
     }
@@ -89,7 +89,12 @@ class OrganisationController extends Controller
      */
     public function update(Request $request, Organisation $organisation)
     {
-        $organisation->update($request->all());
+        $user = Auth::user();
+        if ($user->organisation_id == $organisation->id || $user->role == 'SuperAdmin') {
+            $organisation->update($request->all());
+        }else{
+            abort(404);
+        }
         return redirect()->route('organisation.index');
     }
 
