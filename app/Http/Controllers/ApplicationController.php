@@ -40,7 +40,7 @@ class ApplicationController extends Controller
         if($user->role == 'SuperAdmin' || $user->role == 'Admin'|| $user->role == 'Webmaster') {
             return view('pages.application.create');
             }else{
-            abort(404);
+            return view('layouts.404');
         }
     }
 

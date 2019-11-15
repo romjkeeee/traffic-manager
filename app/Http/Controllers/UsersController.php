@@ -22,7 +22,7 @@ class UsersController extends Controller
         if($user->role == 'SuperAdmin') {
             $data = User::all();
         }elseif($user->role == 'Webmaster'){
-            abort(404);
+            return view('layouts.404');
         }else{
             $data = User::where('organisation_id','=',$user->organisation_id)->get();
         }
@@ -46,7 +46,7 @@ class UsersController extends Controller
         }elseif($user->role == 'Admin'){
             return view('pages.users.create');
         }else{
-            abort(404);
+            return view('layouts.404');
         }
     }
 

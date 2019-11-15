@@ -53,7 +53,7 @@ class OffersController extends Controller
 
             return view('pages.offers.create', compact('app', 'countries', 'user'));
         }else{
-            abort(404);
+            return view('layouts.404');
         }
     }
 

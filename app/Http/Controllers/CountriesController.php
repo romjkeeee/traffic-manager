@@ -20,7 +20,7 @@ class CountriesController extends Controller
             $data = Countries::all();
             return view('pages.countries.index', compact('data'));
         }else{
-            abort(404);
+            return view('layouts.404');
         }
     }
 

@@ -35,7 +35,7 @@ class OrganisationController extends Controller
         if($user->role == 'SuperAdmin') {
             return view('pages.organisation.create');
         }else{
-            abort(404);
+            return view('layouts.404');
         }
     }
 
@@ -75,7 +75,7 @@ class OrganisationController extends Controller
         if ($user->organisation_id == $organisation->id || $user->role == 'SuperAdmin') {
         $data = $organisation;
         }else{
-            abort(404);
+            return view('layouts.404');
         }
         return view('pages.organisation.edit', compact('data'));
     }
@@ -93,7 +93,7 @@ class OrganisationController extends Controller
         if ($user->organisation_id == $organisation->id || $user->role == 'SuperAdmin') {
             $organisation->update($request->all());
         }else{
-            abort(404);
+            return view('layouts.404');
         }
         return redirect()->route('organisation.index');
     }
