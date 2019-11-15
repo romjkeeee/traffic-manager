@@ -31,6 +31,13 @@
                     </div>
                 @endforeach
 
+                @if(\Auth::user()->role == 'SuperAdmin')
+                    <div class="form-group">
+                        <label for="inputForOrganisation_id">@lang('adminlte.organisation_id')</label>
+                        <input class="form-control"  style="" name="organisation_id" id="inputOrganisation_id" value="{{$data['organisation_id']}}">
+                    </div>
+                @endif
+
 
 
                 <div class="form-group">

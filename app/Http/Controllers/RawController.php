@@ -28,7 +28,7 @@ class RawController extends Controller
                 echo null;
             }else{
                 $exp = explode("_", $data['Param']);
-                if( count($exp) != 3)
+                if( count($exp) == 2)
                 {
                     $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
 
@@ -41,7 +41,7 @@ class RawController extends Controller
                     }else{
                         echo null;
                     }
-                }elseif(count($exp) != 2){
+                }elseif(count($exp) == 3){
                     $country = Countries::where('code','=',$data['CountryCode'])->first()->id;
 
                     $data = Offers::where('application_id', '=', $exp[0])->where('user_id', '=', $exp[1])->where('countries_id','like', '%'.$country.'%')->where('add_param',$exp[2])->first();

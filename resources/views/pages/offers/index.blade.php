@@ -48,7 +48,10 @@
                             <th>Deep Link</th>
                             <th>@lang('adminlte.redirect')</th>
                             <th>@lang('adminlte.install')</th>
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
+                            <th>@lang('adminlte.organisation_id')</th>
                             <th>@lang('adminlte.action')</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -73,7 +76,8 @@
                         <td>{{ $offers->redirect }}</td>
                         <td>{{ $offers->install }}</td>
                             @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'WebMaster')
-                            <td>
+                                <td>{{ $offers->organisation_id }}</td>
+                                <td>
                         <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>
                         </td>

@@ -19,7 +19,7 @@ class OffersController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->role_id == 1) {
+        if($user->role == 'SuperAdmin') {
             $data = Offers::with('user')->get();
         }else{
             $data = Offers::with('user')->where('organisation_id', '=', $user->organisation_id)->get();
@@ -36,13 +36,19 @@ class OffersController extends Controller
      */
     public function create()
     {
+        $users = Auth::user();
+        if($users->role == 'SuperAdmin' || $users->role == 'Admin' || $users->role == 'Webmaster') {
+
         $app = Application::get()->pluck('name', 'id');
 
         $countries = Countries::all();
 
         $user = User::get()->pluck('email', 'id');
 
-        return view('pages.offers.create', compact('app', 'countries', 'user'));
+            return view('pages.offers.create', compact('app', 'countries', 'user'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -53,8 +59,7 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
-        $countries = Countries::all();
-
+        $user = Auth::user();
         $deep_link = new Offers();
             $data = [
                 'url' => $request->url,
@@ -64,7 +69,10 @@ class OffersController extends Controller
                 'comment' => $request->comment,
                 'add_param' => $request->add_param
             ];
-        $deep_link->save($data);
+        if($user->role != 'SuperAdmin') {
+                $deep_link->organisation_id = $user->organisation_id;
+        }
+            $deep_link->save($data);
 
         if($request->application_id) {
             $user_app = Application::where('id','=',$request->application_id)->first();
@@ -76,9 +84,7 @@ class OffersController extends Controller
             }
             $deep_link->update($data);
         }
-
-        $data = Offers::all();
-        return view('pages.offers.index', compact('data','countries'));
+        return redirect()->route('offers.index');
     }
 
     /**
