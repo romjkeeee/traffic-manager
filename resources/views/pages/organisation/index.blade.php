@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-    @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
+    @if(\Auth::user()->role == 'SuperAdmin')
         <div class="primary">
         <p>
             <a href="{{ route('organisation.create') }}" class="btn btn-success btn-lg">Создать</a>

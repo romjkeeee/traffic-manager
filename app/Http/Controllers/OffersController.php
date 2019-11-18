@@ -121,11 +121,13 @@ class OffersController extends Controller
             $countries = Countries::All();
             $user = User::get()->pluck('email', 'id');
             $data = $offer;
-        }elseif($user->role == 'Webmaster'){
+        }elseif($user->role == 'Webmaster' || $user->role == 'Admin'){
             $app = Application::where('organisation_id','=',$user->organisation_id)->get()->pluck('name', 'id');
             $countries = Countries::All();
             $user = User::where('organisation_id','=',$user->organisation_id)->get()->pluck('email', 'id');
             $data = $offer;
+        }else{
+            return view('layouts.404');
         }
         return view('pages.offers.edit', compact('data', 'app', 'countries', 'user'));
     }
