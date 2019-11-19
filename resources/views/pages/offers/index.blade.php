@@ -78,9 +78,10 @@
                             @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
                                 <td>{{ $offers->organisation_id? $offers->organisation->name: '' }}</td>
                                 <td>
-                        <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>
-                        </td>
+                                    <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('offers.copy',[$offers->id]) }}"><i class="fas fa-copy"></i></a>
+                                </td>
                                 @endif
                         </tr>
                         @endforeach

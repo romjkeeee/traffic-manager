@@ -64,6 +64,7 @@
                                     <td>
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('app.copy',[$application->id]) }}"><i class="fas fa-copy"></i></a>
                                     </td>
                                     @endif
                             </tr>

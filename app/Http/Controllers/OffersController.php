@@ -186,4 +186,23 @@ class OffersController extends Controller
     {
         //
     }
+
+    public function copy($id)
+    {
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $app = Application::get()->pluck('name', 'id');
+            $countries = Countries::All();
+            $user = User::get()->pluck('email', 'id');
+            $data = Offers::where('id','=',$id)->first();
+        }elseif($user->role == 'Webmaster' || $user->role == 'Admin'){
+            $app = Application::where('organisation_id','=',$user->organisation_id)->get()->pluck('name', 'id');
+            $countries = Countries::All();
+            $user = User::where('organisation_id','=',$user->organisation_id)->get()->pluck('email', 'id');
+            $data = Offers::where('id','=',$id)->first();
+        }else{
+            return view('layouts.404');
+        }
+        return view('pages.offers.copy', compact('data', 'app', 'countries', 'user'));
+    }
 }

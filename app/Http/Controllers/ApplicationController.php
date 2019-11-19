@@ -123,4 +123,15 @@ class ApplicationController extends Controller
     {
         //
     }
+
+    public function copy($id)
+    {
+        $user = Auth::user();
+        $data = Application::where('id','=',$id)->first();
+        if($user->role == 'SuperAdmin') {
+            $organisation = Organisation::get()->pluck('name', 'id');
+            return view('pages.application.copy', compact('data', 'organisation'));
+        }
+        return view('pages.application.copy', compact('data'));
+    }
 }
