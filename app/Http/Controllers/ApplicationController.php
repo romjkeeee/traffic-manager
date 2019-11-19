@@ -83,8 +83,12 @@ class ApplicationController extends Controller
      */
     public function edit(Application $application)
     {
-        //
+        $user = Auth::user();
         $data = $application;
+        if($user->role == 'SuperAdmin') {
+            $organisation = Organisation::get()->pluck('name', 'id');
+            return view('pages.application.edit', compact('data', 'organisation'));
+        }
         return view('pages.application.edit', compact('data'));
     }
 
