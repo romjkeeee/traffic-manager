@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Создание предложения</h3>
+            <h3 class="card-title">Копирование предложения[web view]</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">

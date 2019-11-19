@@ -52,5 +52,6 @@ return [
     'organisation'    => 'Организации',
     'organisation_id'    => 'Организация',
     'add_param'    => 'Add Param',
+    'application_copy'    => 'Копирование Приложения',
 
 ];
