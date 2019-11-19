@@ -30,8 +30,13 @@
                     @endforeach
                     @if(\Auth::user()->role == 'SuperAdmin')
                         <div class="form-group">
-                            <label for="inputForOrganisation_id">@lang('adminlte.organisation_id')</label>
-                            <input class="form-control"  style="" name="organisation_id" id="inputOrganisation_id" >
+                            <label for="inputForurl">@lang('adminlte.organisation_id')</label>
+                            <p><select name="organisation_id">
+                                    <option selected disabled>Выберите организацию</option>
+                                    @foreach($organisation as $key => $org)
+                                            <option value="{{ $key }}">{{ $org }}</option>
+\                                    @endforeach
+                                </select></p>
                         </div>
                     @endif
 

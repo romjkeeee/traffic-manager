@@ -115,9 +115,7 @@ class UsersController extends Controller
         $alldata = $request->all();
 
         $user->update($alldata);
-        $data = $user->all();
-
-        return view('pages.users.index', compact('data'));
+        return redirect()->route('users.index');
     }
 
     /**

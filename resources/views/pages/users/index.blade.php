@@ -41,7 +41,7 @@
                             <th>@lang('adminlte.name_user')</th>
                             <th>@lang('adminlte.email')</th>
                             <th>@lang('adminlte.role')</th>
-                            @if(\Auth::user()->role == 'SuperAdmin')
+                            @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
                             <th>@lang('adminlte.organisation_id')</th>
                             <th>@lang('adminlte.action')</th>
                                 @endif
@@ -53,7 +53,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td style="width: 100%">{{ $user->email }}</td>
                                 <td>{{ $user->role }}</td>
-                                @if(\Auth::user()->role == 'SuperAdmin')
+                                @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin')
                                     <td>{{ $user->organisation_id? $user->organisation->name: '' }}</td>
                                     <td>
                                     <a href="{{ route('users.show',[$user->id]) }}"><i class="fas fa-eye"></i></a>

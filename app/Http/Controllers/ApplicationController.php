@@ -37,9 +37,12 @@ class ApplicationController extends Controller
     public function create()
     {
         $user = Auth::user();
-        if($user->role == 'SuperAdmin' || $user->role == 'Admin'|| $user->role == 'Webmaster') {
+        if ($user->role == 'SuperAdmin' || $user->role == 'Admin' || $user->role == 'Webmaster') {
+            $organisation = Organisation::get()->pluck('name', 'id');
+            return view('pages.application.create',compact('organisation'));
+        } elseif ($user->role == 'Admin' || $user->role == 'Webmaster'){
             return view('pages.application.create');
-            }else{
+        }else{
             return view('layouts.404');
         }
     }

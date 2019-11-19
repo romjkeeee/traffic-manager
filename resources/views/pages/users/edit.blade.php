@@ -22,6 +22,12 @@
                         'organisation_id',
                     );
 
+                    $role_data = array(
+                        'Admin',
+                        'Company',
+                        'Webmaster',
+                    )
+
                     ?>
                     @foreach($form_fields as $field)
                         @if($field == 'role')
@@ -29,12 +35,17 @@
                                 <label for="inputForurl">@lang('adminlte.role')</label>
                                 <p><select name="role">
                                         <option selected disabled>Выберите роль</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Company">Company</option>
-                                                <option value="Webmaster">Webmaster</option>
+                                        @foreach($role_data as $role)
+                                            @if($role == $data->role)
+                                                <option value="{{ $role }}" selected>{{ $role }}</option>
+                                            @else
+                                                <option value="{{ $role }}">{{ $role }}</option>
+                                            @endif
+                                        @endforeach
                                     </select></p>
                             </div>
                             @elseif($field == 'organisation_id')
+                            @if(\Auth::user()->role == 'SuperAdmin')
                             <div class="form-group">
                                 <label for="inputForurl">@lang('adminlte.organisation_id')</label>
                                 <p><select name="organisation_id">
@@ -48,6 +59,7 @@
                                         @endforeach
                                     </select></p>
                             </div>
+                                @endif
                             @else
                         <div class="form-group">
                             <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
