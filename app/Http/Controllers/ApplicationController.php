@@ -121,7 +121,9 @@ class ApplicationController extends Controller
      */
     public function destroy(Application $application)
     {
-        //
+        $application->delete();
+
+        return redirect()->route('application.index');
     }
 
     public function copy($id)
