@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Копирование предложения[web view]</h3>
+            <h3 class="card-title">@lang('adminlte.copy_offer')</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
@@ -42,7 +42,7 @@
                             </select></p>
                     </div>
                     <div class="form-group">
-                        <label>Приложения</label>
+                        <label>@lang('adminlte.application')</label>
                         <p><select name="application_id">
                                 <option selected disabled>Выберите приложение</option>
                                 @foreach($app as $key => $application)

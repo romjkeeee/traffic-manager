@@ -11,7 +11,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">@lang('adminlte.home')</a></li>
                     <li class="breadcrumb-item active">@lang('adminlte.organisation')</li>
                 </ol>
             </div>
@@ -23,7 +23,7 @@
     @if(\Auth::user()->role == 'SuperAdmin')
         <div class="primary">
         <p>
-            <a href="{{ route('organisation.create') }}" class="btn btn-success btn-lg">Создать</a>
+            <a href="{{ route('organisation.create') }}" class="btn btn-success btn-lg">@lang('adminlte.create')</a>
         </p>
     </div>
         @endif

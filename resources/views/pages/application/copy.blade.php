@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label for="inputForurl">@lang('adminlte.organisation_id')</label>
                             <p><select name="organisation_id">
-                                    <option selected disabled>Выберите организацию</option>
+                                    <option selected disabled>@lang('adminlte.chose_org')</option>
                                     @foreach($organisation as $key => $org)
                                         @if($key == $data->organisation_id)
                                             <option value="{{ $key }}" selected>{{ $org }}</option>

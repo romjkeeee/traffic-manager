@@ -18,6 +18,7 @@ return [
     'register_message'            => 'Регистрация нового пользователя',
     'password_reset_message'      => 'Восстановление пароля',
     'reset_password'              => 'Восстановление пароля',
+    'passwords.sent'              => 'Инструкция по восстановлению отправлена на указаный адрес',
     'countries'    => 'Страны',
     'countries_id'    => 'Страны',
     'name'    => 'Наименование',
@@ -53,5 +54,11 @@ return [
     'organisation_id'    => 'Организация',
     'add_param'    => 'Add Param',
     'application_copy'    => 'Копирование Приложения',
+    'chose_org'    => 'Выберете организацию',
+    'create_app'    => 'Создание приложения',
+    'home'    => 'Главная',
+    'create'    => 'Создать',
+    'create_countries'    => 'Создание страны',
+    'copy_offer'    => 'Копирование предложения[web view]',
 
 ];

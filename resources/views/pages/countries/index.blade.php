@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Страны</h1>
+                <h1>@lang('adminlte.countries')</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
-                    <li class="breadcrumb-item active">Страны</li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">@lang('adminlte.home')</a></li>
+                    <li class="breadcrumb-item active">@lang('adminlte.countries')</li>
                 </ol>
             </div>
         </div>
@@ -22,7 +22,7 @@
 @section('content')
     <div class="primary">
         <p>
-            <a href="{{ route('countries.create') }}" class="btn btn-success btn-lg">Создать</a>
+            <a href="{{ route('countries.create') }}" class="btn btn-success btn-lg">@lang('adminlte.create')</a>
         </p>
     </div>
 

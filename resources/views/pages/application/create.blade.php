@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Создание приложения</h3>
+            <h3 class="card-title">@lang('adminlte.create_app')</h3>
         </div>
         <div class="panel panel-default">
             <div class="card-body">
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="inputForurl">@lang('adminlte.organisation_id')</label>
                             <p><select name="organisation_id">
-                                    <option selected disabled>Выберите организацию</option>
+                                    <option selected disabled>@lang('adminlte.chose_org')</option>
                                     @foreach($organisation as $key => $org)
                                             <option value="{{ $key }}">{{ $org }}</option>
 \                                    @endforeach
