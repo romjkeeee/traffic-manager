@@ -42,11 +42,6 @@ class User extends Authenticatable
         return $this->hasMany(Deep_link::class, 'user_id');
     }
 
-    public function roles()
-    {
-        return $this->belongsTo(Role::class, 'role_id');
-    }
-
     public function organisation()
     {
         return $this->belongsTo(Organisation::class, 'organisation_id');

@@ -22,9 +22,9 @@
                     <input class="form-control" value="{{ $data->email }}" disabled>
                 </div>
                 <div class="form-group">
-                    <label>@lang('adminlte.role_id')</label>
+                    <label>@lang('adminlte.role')</label>
 
-                    <input class="form-control" value="{{ $data->role_id? $data->roles->name: ''  }}" disabled>
+                    <input class="form-control" value="{{ $data->role }}" disabled>
                 </div>
                 <div class="form-group">
                     <label>@lang('adminlte.organisation_id')</label>
