@@ -30,17 +30,15 @@
                     <?php $selected_countries = json_decode($data->countries_id,true);  ?>
                     <div class="form-group">
                         <label for="inputForurl">@lang('adminlte.countries_id')</label>
-                        <p><select name="countries_id[]" multiple>
-
-
+                        <p><?php $i = 1 ?>
                                 @foreach($countries as $strana)
                                     @if( in_array($strana->id, $selected_countries))
-                                    <option value="{{ $strana->id }}" selected>{{ $strana->name }}</option>
+                                    <input type="checkbox" name="countries_id[]" value="{{ $strana->id }}" checked>{{ $strana->name }}
                                     @else
-                                    <option value="{{ $strana->id }}">{{ $strana->name }}</option>
+                                    <input type="checkbox" name="countries_id[]" value="{{ $strana->id }}">{{ $strana->name }}
                                     @endif
                                 @endforeach
-                            </select></p>
+                            </p>
                     </div>
                     <div class="form-group">
                         <label>Приложения</label>
