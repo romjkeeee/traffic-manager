@@ -65,6 +65,15 @@
                                     <a href="{{ route('application.show',[$application->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('application.edit',[$application->id]) }}"><i class="fas fa-edit"></i></a>
                                     <a href="{{ route('app.copy',[$application->id]) }}"><i class="fas fa-copy"></i></a>
+                                        @if(\Auth::user()->role == 'SuperAdmin')
+                                            <form action="{{ route('application.destroy', $application->id) }}" method="POST">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <button class="btn btn-block btn-danger" type="submit">Удалить</button>
+                                                </div>
+                                            </form>
+                                        @endif
                                     </td>
                                     @endif
                             </tr>

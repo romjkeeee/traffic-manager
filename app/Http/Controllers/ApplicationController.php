@@ -121,8 +121,10 @@ class ApplicationController extends Controller
      */
     public function destroy(Application $application)
     {
-        $application->delete();
-
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $application->delete();
+        }
         return redirect()->route('application.index');
     }
 

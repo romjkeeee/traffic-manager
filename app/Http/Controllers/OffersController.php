@@ -184,7 +184,11 @@ class OffersController extends Controller
      */
     public function destroy(Offers $offer)
     {
-        //
+        $user = Auth::user();
+        if($user->role == 'SuperAdmin') {
+            $offer->delete();
+        }
+        return redirect()->route('offers.index');
     }
 
     public function copy($id)

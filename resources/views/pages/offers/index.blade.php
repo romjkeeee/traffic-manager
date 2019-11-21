@@ -68,7 +68,11 @@
                             ?>
 
                         </td>
+                            @if($offers->applications != null)
                         <td>{{ $offers->application_id? $offers->applications->name: '' }}</td>
+                            @else
+                                <td>DELETED</td>
+                            @endif
                         <td>{{ $offers->user_id? $offers->user->email: '' }}</td>
                         <td>{{ $offers->add_param }}</td>
                         <td>{{ $offers->comment }}</td>
@@ -81,6 +85,15 @@
                                     <a href="{{ route('offers.show',[$offers->id]) }}"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('offers.edit',[$offers->id]) }}"><i class="fas fa-edit"></i></a>
                                     <a href="{{ route('offers.copy',[$offers->id]) }}"><i class="fas fa-copy"></i></a>
+                                    @if(\Auth::user()->role == 'SuperAdmin')
+                                        <form action="{{ route('offers.destroy', $offers->id) }}" method="POST">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <div class="form-group">
+                                                <button class="btn btn-block btn-danger" type="submit">Удалить</button>
+                                            </div>
+                                        </form>
+                                    @endif
                                 </td>
                                 @endif
                         </tr>
