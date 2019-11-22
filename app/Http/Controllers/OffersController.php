@@ -6,6 +6,7 @@ use App\Application;
 use App\Countries;
 use App\Offers;
 use App\Organisation;
+use App\Statistics_offer;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -208,5 +209,18 @@ class OffersController extends Controller
             return view('layouts.404');
         }
         return view('pages.offers.copy', compact('data', 'app', 'countries', 'user'));
+    }
+
+    public function calendar($id)
+    {
+        $stat = Statistics_offer::select('created_at as date','redirect_view','install_view')->where('offers_id','=',$id)->get();
+
+        return view('pages.offers.calendar', compact('stat'));
+    }
+
+    public function stat(Request $request)
+    {
+        dd($request->all());
+
     }
 }

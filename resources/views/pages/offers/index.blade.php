@@ -77,7 +77,7 @@
                         <td>{{ $offers->add_param }}</td>
                         <td>{{ $offers->comment }}</td>
                         <td>{{ $offers->deeplink }}</td>
-                        <td>{{ $offers->redirect }}</td>
+                        <td><a href="{{ route('offers.calendar',[$offers->id]) }}">{{ $offers->redirect }}</a></td>
                         <td>{{ $offers->install }}</td>
                             @if(\Auth::user()->role == 'SuperAdmin' || \Auth::user()->role == 'Admin' || \Auth::user()->role == 'Webmaster')
                                 <td>{{ $offers->organisation_id? $offers->organisation->name: '' }}</td>
