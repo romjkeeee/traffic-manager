@@ -27,6 +27,7 @@ Route::group(['middleware'=>'auth'], function () {
     Route::resource('/pages/countries', 'CountriesController');
     Route::resource('/pages/offers', 'OffersController');
     Route::get('/pages/offers/calendar/{id}', 'OffersController@calendar')->name('offers.calendar');
+    Route::post('/pages/offers/stat/{id}', 'OffersController@stat')->name('offers.stat');
     Route::get('/pages/offers/{id}/copy', 'OffersController@copy')->name('offers.copy');
     Route::resource('/pages/deep_link', 'DeepLinkController');
     Route::resource('/pages/organisation', 'OrganisationController');

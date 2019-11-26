@@ -213,14 +213,20 @@ class OffersController extends Controller
 
     public function calendar($id)
     {
-        $stat = Statistics_offer::select('created_at as date','redirect_view','install_view')->where('offers_id','=',$id)->get();
+        $data = Statistics_offer::where('offers_id','=',$id)->get()->last();
 
-        return view('pages.offers.calendar', compact('stat'));
+        return view('pages.offers.calendar', compact('data'));
     }
 
-    public function stat(Request $request)
+    public function stat(Request $request, $id)
     {
-        dd($request->all());
-
+        $exp = explode(',', $request->created_at);
+        //dd(date('Y-m-d', strtotime($exp[0])));
+        if(count($exp) == 2) {
+            $data = Statistics_offer::where('offers_id','=', $id)->whereBetween('created_at', [date('Y-m-d', strtotime($exp[0])), date('Y-m-d', strtotime($exp[1]))])->get()->last();
+        }else{
+            $data = Statistics_offer::where('offers_id','=', $id)->whereDate('created_at','=', date('Y-m-d', strtotime($exp[0])))->get()->last();
+        }
+        return view('pages.offers.calendar', compact('data'));
     }
 }

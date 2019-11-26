@@ -11,17 +11,16 @@
     <link href="../node_modules/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="../node_modules/air-datepicker/dist/js/datepicker.min.js"></script>
 
-    <form action="" method="GET">
+    <form action="{{ route('offers.stat', $data->offers_id) }}" method="POST">
+        {{ csrf_field() }}
         <div class="form-group">
-    <div name="created_at" data-range="true" class="datepicker-here" data-language='ru'></div>
-        <button class="btn-success">Искать</button>
-    </div>
+            <input name="created_at" data-range="true" class="datepicker-here" data-language='ru' data-time-format='hh:ii aa'>
+            <button class="btn-success">Искать</button>
+        </div>
     </form>
-    @foreach($stat as $data)
         <div class="form-control">Переходов - {{ $data->redirect_view }}</div>
         <div class="form-control">Установок - {{ $data->install_view }}</div>
-        <div class="form-control">Дата - {{ $data->date }}</div>
-    @endforeach
+        <div class="form-control">Дата - {{ $data->created_at }}</div>
 
     <script>
         // Инициализация
