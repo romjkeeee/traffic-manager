@@ -11,6 +11,7 @@
     <link href="../node_modules/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="../node_modules/air-datepicker/dist/js/datepicker.min.js"></script>
 
+    @if($data != null)
     <form action="{{ route('offers.stat', $data->offers_id) }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
@@ -18,10 +19,14 @@
             <button class="btn-success">Искать</button>
         </div>
     </form>
+
         <div class="form-control">Переходов - {{ $data->redirect_view }}</div>
         <div class="form-control">Установок - {{ $data->install_view }}</div>
         <div class="form-control">Дата - {{ $data->created_at }}</div>
-
+    @else
+        <div>Нету данных</div>
+        <a href="{{ route('offers.index') }}" class="btn btn-default">@lang('adminlte.backtolist')</a>
+    @endif
     <script>
         // Инициализация
         $('#my-element').datepicker([options])

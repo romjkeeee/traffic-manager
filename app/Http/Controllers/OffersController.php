@@ -227,6 +227,7 @@ class OffersController extends Controller
         }else{
             $data = Statistics_offer::where('offers_id','=', $id)->whereDate('created_at','=', date('Y-m-d', strtotime($exp[0])))->get()->last();
         }
+
         return view('pages.offers.calendar', compact('data'));
     }
 }
