@@ -85,9 +85,9 @@ class OffersController extends Controller
             $user_app = Application::where('id','=',$request->application_id)->first();
             if(  ($deep_link->add_param != null ) || ($deep_link->add_param != 0 ) )
             {
-                $deep_link->deeplink = $user_app->link_android . '&param=' . $request->application_id.'_'.$request->user_id.'_'.$deep_link->add_param;
+                $deep_link->deeplink = $user_app->deeplink . substr($user_app->link_android, 35) . '&param=' . $request->application_id.'_'.$request->user_id.'_'.$deep_link->add_param;
             }else{
-                $deep_link->deeplink = $user_app->link_android . '&param=' . $request->application_id.'_'.$request->user_id;
+                $deep_link->deeplink = $user_app->deeplink . substr($user_app->link_android, 35) . '&param=' . $request->application_id.'_'.$request->user_id;
             }
             $deep_link->update($data);
         }
@@ -165,9 +165,9 @@ class OffersController extends Controller
 
             if( ( $offer->add_param != null ) || ($offer->add_param != 0 ) )
             {
-                $offer->deeplink = $user_app->link_android . '&param=' . $request->application_id.'_'.$request->user_id.'_'.$offer->add_param;
+                $offer->deeplink = $user_app->deeplink . substr($user_app->link_android, 35) . '&param=' . $request->application_id.'_'.$request->user_id.'_'.$offer->add_param;
             }else{
-                $offer->deeplink = $user_app->link_android . '&param=' . $request->application_id.'_'.$request->user_id;
+                $offer->deeplink = $user_app->deeplink . substr($user_app->link_android, 35) . '&param=' . $request->application_id.'_'.$request->user_id;
             }
 
             $offer->update($data);
