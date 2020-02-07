@@ -61,12 +61,17 @@
                                     </select></p>
                             </div>
                                 @endif
-                            @else
+                            @elseif('password')
                         <div class="form-group">
                             <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
-                            <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}"  placeholder="@lang('anketa.placeholder_'.$field)"  value="{{$data[$field]}}" >
+                            <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}" value="{{$data[$field]}}" >
                         </div>
-                        @endif
+                        @else
+                            <div class="form-group">
+                                <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
+                                <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}"  placeholder="@lang('anketa.placeholder_'.$field)"  value="{{$data[$field]}}" >
+                            </div>
+                            @endif
                     @endforeach
 
 
