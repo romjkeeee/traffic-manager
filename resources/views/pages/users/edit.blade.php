@@ -64,7 +64,7 @@
                         @elseif($field == 'password')
                         <div class="form-group">
                             <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
-                            <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}" value="{{$data[$field]}}" >
+                            <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}">
                         </div>
                         @else
                             <div class="form-group">
