@@ -61,7 +61,7 @@
                                     </select></p>
                             </div>
                                 @endif
-                            @elseif('password')
+                        @elseif($field == 'password')
                         <div class="form-group">
                             <label for="inputFor{{ $field }}">@lang('adminlte.'.$field)</label>
                             <input class="form-control"  style="" class="" name="{{ $field }}" id="input{{ $field }}" value="{{$data[$field]}}" >
