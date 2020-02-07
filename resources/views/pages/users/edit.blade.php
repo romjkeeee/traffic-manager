@@ -18,6 +18,7 @@
                     $form_fields = array(
                         'name',
                         'email',
+                        'password',
                         'role',
                         'organisation_id',
                     );

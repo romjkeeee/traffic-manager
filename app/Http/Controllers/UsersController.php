@@ -115,6 +115,9 @@ class UsersController extends Controller
         $alldata = $request->all();
 
         $user->update($alldata);
+        if (!empty($alldata['password'])){
+            $user->password = Hash::make($alldata['password']);
+        }
         return redirect()->route('users.index');
     }
 
