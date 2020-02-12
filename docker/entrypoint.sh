@@ -7,7 +7,7 @@ composer install
 npm install
 
 
-php artisan migrate
+php artisan migrate:fresh --seed
 php view:clear
 php route:clear
 php config:clear
